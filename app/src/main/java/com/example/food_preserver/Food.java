@@ -18,7 +18,7 @@ public class Food {
 
 
     //Constructors shouldn't be needed
-    /* public Food() { I WAS HERE
+    /* public Food() {
         name = "Not entered";
         canningMethod = "Not entered";
         freezingMethod = "Not entered";
