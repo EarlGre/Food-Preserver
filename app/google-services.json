@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1057626749027",
+    "firebase_url": "https://food-preserver.firebaseio.com",
+    "project_id": "food-preserver",
+    "storage_bucket": "food-preserver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057626749027:android:a2c7c52053361e0559a056",
+        "android_client_info": {
+          "package_name": "com.example.food_preserver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057626749027-jb8or13egjc8p6e2102hlsfcgoug7kml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.food_preserver",
+            "certificate_hash": "55b4a1f69b8676ee7c26efa30ed8d1912c6b2a93"
+          }
+        },
+        {
+          "client_id": "1057626749027-mcq7guq937k0mtud9989bj8m6aqlau1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARxo-i0ga1OCfKMSUMY9rvfOs0aqGACrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057626749027-mcq7guq937k0mtud9989bj8m6aqlau1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

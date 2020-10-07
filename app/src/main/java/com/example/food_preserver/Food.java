@@ -17,6 +17,8 @@ public class Food {
     }
 
 
+
+
     //Constructors shouldn't be needed
     /* public Food() {
         name = "Not entered";

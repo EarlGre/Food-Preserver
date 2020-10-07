@@ -1,7 +1,6 @@
 package com.example.food_preserver;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,15 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -34,6 +30,11 @@ public class FirstFragment extends Fragment {
     Food foods;
     int imageURI;
     Activity act;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference FruitRef = db.collection("Fruit");
+    private FoodAdapter adapter;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,6 +80,28 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
+
+        //query the items according to the priority field from JSON
+        Query query = FruitRef.orderBy("priority", Query.Direction.ASCENDING);
+        FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                .setQuery(query, FoodItem.class)
+                .build();
+
+
+        //recyclerview implementation in fragment
+        recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
+        adapter = new FoodAdapter(options);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        return view;
+
+
+        // XML PULLER CODE & RECYCLE VIEW
+        /*
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
@@ -136,5 +159,19 @@ public class FirstFragment extends Fragment {
 
         return view;
 
+         */
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
