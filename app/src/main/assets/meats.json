@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>  
-<resources>
-<Meats>
-        <Food>
-            <name>Chicken</name>
-            <image>chicken</image>
-            <canningMethod>Chicken or Rabbit
+{
+  "resources": {
+    "Meats": {
+      "Food": [
+        {
+          "name": "Chicken",
+          "image": "chicken",
+          "canningMethod": "Chicken or Rabbit
 
                 Please read Using Pressure Canners before beginning. If this is your first time canning, it is recommended that you read Principles of Home Canning.
 
@@ -14,24 +15,24 @@
 
                 Raw pack – Add 1 teaspoon salt per quart, if desired. Fill jars loosely with raw meat pieces, leaving 1-1/4 inch headspace. Do not add liquid.
 
-                Adjust lids and process following the recommendations in Table 1 or Table 2 according to the canning method used.</canningMethod>
-            <freezingMethod>Select only high quality, fresh poultry to freeze. The tender young bird is best for roasting, frying and broiling. Choose the more flavorful older birds for braising or stewing.
+                Adjust lids and process following the recommendations in Table 1 or Table 2 according to the canning method used.",
+          "freezingMethod": "Select only high quality, fresh poultry to freeze. The tender young bird is best for roasting, frying and broiling. Choose the more flavorful older birds for braising or stewing.
 
                 Package poultry in freezer paper or wrap using the drugstore or butcher wrap, or place in freezer bags. Storebought poultry needs to be over-wrapped before freezing because its clear wrap is not moisture-vapor resistant. When packaging pieces, arrange them to form a compact, square, flat package so they will stack better in the freezer. After packaging, seal and freeze immediately.
 
                 Quail, dove, duck, pheasant and other game birds should be dressed and gutted as soon as possible after shooting. Cool and clean properly. Remove excess fat on wild ducks and geese since it becomes rancid very quickly. Freeze as directed for poultry.
 
-                Do not stuff poultry or game birds before freezing them. During freezing or thawing times, bacteria that cause foodborne illness could easily grow in the stuffing. Commercially stuffed frozen poultry is prepared under special safety conditions that cannot be duplicated at home.</freezingMethod>
-            <dryingMethod>No links available.</dryingMethod>
-            <canningUrl>https://nchfp.uga.edu/how/can_05/chicken_rabbit.html</canningUrl>
-            <freezingUrl>https://nchfp.uga.edu/how/freeze/poultry.html</freezingUrl>
-            <dryingUrl>No links available.</dryingUrl>
-            <type>meat</type>
-        </Food>
-        <Food>
-            <name>Red Meat</name>
-            <image>red_meat</image>
-            <canningMethod>(Hot Pack Method for Canning Meat)
+                Do not stuff poultry or game birds before freezing them. During freezing or thawing times, bacteria that cause foodborne illness could easily grow in the stuffing. Commercially stuffed frozen poultry is prepared under special safety conditions that cannot be duplicated at home.",
+          "dryingMethod": "No links available.",
+          "canningUrl": "https://nchfp.uga.edu/how/can_05/chicken_rabbit.html",
+          "freezingUrl": "https://nchfp.uga.edu/how/freeze/poultry.html",
+          "dryingUrl": "No links available.",
+          "type": "meat"
+        },
+        {
+          "name": "Red Meat",
+          "image": "red_meat",
+          "canningMethod": "(Hot Pack Method for Canning Meat)
 
                 Beef, venison, elk, or pork; Salt (optional); Water; Canning jars, lids, and rings (quarts or pints are fine); A pressure canner
                 Trim the meat to remove excess fat and gristle. (I usually try to do this when the meat is half-frozen. It makes the trimming much easier) Slice into strips against the grain, and then cut into roughly 1″ cubes (just eyeball it– no need to be exact). how to can beef, venison, or elk with a pressure canner for fork-tender meat! Place the cubes into a large stockpot and brown thoroughly on all sides. If your meat is especially lean, you may need to add a bit of fat (such as bacon grease, lard, or coconut oil) to the pan to prevent stickage. (Yes, that’s a word) The goal here is to simply brown the cubes— you don’t need to cook them all the way through.
@@ -41,24 +42,24 @@
 
                 Pints: 75 minutes
                 Quarts: 90 minutes
-                Use 10 pounds of pressure, UNLESS you are 1,000 feet or more above sea level. If that is the case, increase to 15 pounds of pressure.</canningMethod>
-            <freezingMethod>Cutting steaks from a big piece of meat like a strip loin or a boneless rib roast
+                Use 10 pounds of pressure, UNLESS you are 1,000 feet or more above sea level. If that is the case, increase to 15 pounds of pressure.",
+          "freezingMethod": "Cutting steaks from a big piece of meat like a strip loin or a boneless rib roast
                 allows you to make steaks just the right thickness. Grill some of the steaks now and freeze the
                 remaining ones for another day. Here's how: The key to freezing a steak properly is to prevent
                 air from touching the surface of the meat. Wrap each steak individually with plastic wrap, not
                 butcher paper or aluminum foil, and seal it as tightly as possible. Place the wrapped steaks in a
                 resealable freezer bag and set the freezer as close to 0°F as it will go. The colder, the better.
-                Steaks packaged this way will keep very well for about 3 months. </freezingMethod>
-            <dryingMethod>No links available.</dryingMethod>
-            <canningUrl>https://www.theprairiehomestead.com/2015/01/canning-meat.html</canningUrl>
-            <freezingUrl>https://www.weber.com/CA/en/grill-skills/mastering-red-meat/steak/freezing-steaks/weber-34455.html#:~:text=Wrap%20each%20steak%20individually%20with,well%20for%20about%203%20months.</freezingUrl>
-            <dryingUrl>No links available.</dryingUrl>
-            <type>meat</type>
-        </Food>
-        <Food>
-            <name>Fish</name>
-            <image>fish</image>
-            <canningMethod>Gather your canning supplies: Pressure canner,canning jars, canning lids and rings jar lifter and canning funnel, stock pot, bowls, large spoons, sharp knife, towels and dish clothes.
+                Steaks packaged this way will keep very well for about 3 months. ",
+          "dryingMethod": "No links available.",
+          "canningUrl": "https://www.theprairiehomestead.com/2015/01/canning-meat.html",
+          "freezingUrl": "https://www.weber.com/CA/en/grill-skills/mastering-red-meat/steak/freezing-steaks/weber-34455.html#:~:text=Wrap%20each%20steak%20individually%20with,well%20for%20about%203%20months.",
+          "dryingUrl": "No links available.",
+          "type": "meat"
+        },
+        {
+          "name": "Fish",
+          "image": "fish",
+          "canningMethod": "Gather your canning supplies: Pressure canner,canning jars, canning lids and rings jar lifter and canning funnel, stock pot, bowls, large spoons, sharp knife, towels and dish clothes.
 
                 Ingredients: Fish, Canning salt
                 First, clean your fish. You'll need to remove the head, tail, and all fins and scales. Wash well and split fish lengthwise. Cut fish into jar-length pieces.
@@ -69,18 +70,20 @@
 
                 Drain fish for 10 minutes. You want to be sure it is well drained. Draining fish. Packing jars. Pack fish into hot jars (pints or half pints), skin sides out next to the glass. Leave a 1-inch headspace. Do not add liquid. Place lids and process according to pressure canning instructions.
 
-                Process pints or half pints 1 hour 40 minutes at 10 pounds pressure.</canningMethod>
-            <freezingMethod>Fresh fish is a tasty protein that has a relatively short shelf life. Any fish you are not planning on eating within a few days must be frozen. Properly freezing a fish does not mean tossing it into the freezer. Here's what you need to know to have top-quality fish for months:
+                Process pints or half pints 1 hour 40 minutes at 10 pounds pressure.",
+          "freezingMethod": "Fresh fish is a tasty protein that has a relatively short shelf life. Any fish you are not planning on eating within a few days must be frozen. Properly freezing a fish does not mean tossing it into the freezer. Here's what you need to know to have top-quality fish for months:
 
                 Air is your enemy. Any air that touches your fish will destroy it. It's that simple. So you must prevent air from contacting the fish by vacuum-sealing it, glazing it or wrapping it tightly. (This is in order of preference.)
                 If you catch a lot of fish or buy lots of fresh fish from the market, buy a vacuum sealer. They're worth every penny and you'll use them frequently.
                 If you choose not to vacuum seal, you can glaze the fish by dipping them in cold water and putting the dipped fish on a sheet pan in the freezer. Let that water freeze, then repeat the process several more times to get a 1/4 inch thick ice glaze on the fish. You can then put your glazed fish into a plastic bag and place in the freezer for storage.
-                You can wrap your fish in plastic wrap, then put the wrapped fish into a plastic bag. This method is not as effective at preventing moisture loss and freezer burn like the other methods.</freezingMethod>
-            <dryingMethod>No links available.</dryingMethod>
-            <canningUrl>https://www.simplycanning.com/canning-fish.html</canningUrl>
-            <freezingUrl>https://www.thespruceeats.com/tips-on-freezing-fish-1300632</freezingUrl>
-            <dryingUrl>No links available.</dryingUrl>
-            <type>meat</type>
-        </Food>
-    </Meats>
-</resources>
+                You can wrap your fish in plastic wrap, then put the wrapped fish into a plastic bag. This method is not as effective at preventing moisture loss and freezer burn like the other methods.",
+          "dryingMethod": "No links available.",
+          "canningUrl": "https://www.simplycanning.com/canning-fish.html",
+          "freezingUrl": "https://www.thespruceeats.com/tips-on-freezing-fish-1300632",
+          "dryingUrl": "No links available.",
+          "type": "meat"
+        }
+      ]
+    }
+  }
+}
