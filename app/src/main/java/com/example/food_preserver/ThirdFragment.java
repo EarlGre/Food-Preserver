@@ -8,6 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -25,13 +32,16 @@ import java.util.ArrayList;
  */
 public class ThirdFragment extends Fragment {
 
+  //  RecyclerView recyclerView;
+  //  ArrayList<Food> foodList = new ArrayList<>();
+  //  Food foods;
+  //  int imageURI;
+  //  Activity act;
+
     RecyclerView recyclerView;
-
-    ArrayList<Food> foodList = new ArrayList<>();
-    Food foods;
-    int imageURI;
-    Activity act;
-
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference FruitRef = db.collection("Meat");
+    private FoodAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,6 +87,37 @@ public class ThirdFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
+
+        //query the items according to the priority field from JSON
+        Query query = FruitRef.orderBy("priority", Query.Direction.ASCENDING);
+        FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                .setQuery(query, FoodItem.class)
+                .build();
+
+        //recyclerview implementation in fragment
+        recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
+        adapter = new FoodAdapter(options);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //On click listener for items
+        adapter.setOnItemClickListener(new FoodAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Food note = documentSnapshot.toObject(Food.class);
+                String id = documentSnapshot.getId();
+                String path = documentSnapshot.getReference().getPath();
+                Toast.makeText(getActivity(),
+                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return view;
+
+
+        /*
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_third, container, false);
 
@@ -136,5 +177,20 @@ public class ThirdFragment extends Fragment {
 
         return view;
 
+ */
+
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 }

@@ -26,13 +26,12 @@ import java.util.ArrayList;
  */
 public class FirstFragment extends Fragment {
 
+    //  ArrayList<Food> foodList = new ArrayList<>();
+    //  Food foods;
+    //  int imageURI;
+    //  Activity act;
+
     RecyclerView recyclerView;
-
-    ArrayList<Food> foodList = new ArrayList<>();
-    Food foods;
-    int imageURI;
-    Activity act;
-
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference FruitRef = db.collection("Fruit");
     private FoodAdapter adapter;
@@ -91,7 +90,6 @@ public class FirstFragment extends Fragment {
         FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
                 .setQuery(query, FoodItem.class)
                 .build();
-
 
         //recyclerview implementation in fragment
         recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
