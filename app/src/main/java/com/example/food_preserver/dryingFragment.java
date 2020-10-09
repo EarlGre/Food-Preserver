@@ -1,6 +1,5 @@
 package com.example.food_preserver;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,14 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -137,7 +128,7 @@ public class dryingFragment extends Fragment {
 
         dryingDetails = v.findViewById(R.id.drying);
         FoodItem details = getActivity().getIntent().getParcelableExtra("food");
-        dryingDetails.setText(details.getDescription());
+        dryingDetails.setText(details.getDryingMethod());
 
 
 

@@ -1,6 +1,5 @@
 package com.example.food_preserver;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,16 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -140,7 +129,7 @@ public class canningFragment extends Fragment {
         // text from description field is read into the fragment
         canningDetails = v.findViewById(R.id.canning);
         FoodItem details = getActivity().getIntent().getParcelableExtra("food");
-        canningDetails.setText(details.getDescription());
+        canningDetails.setText(details.getCanningMethod());
 
 
 

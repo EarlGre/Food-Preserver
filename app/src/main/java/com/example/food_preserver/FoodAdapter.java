@@ -22,7 +22,6 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
     @Override
     protected void onBindViewHolder(@NonNull FoodHolder holder, int position, @NonNull FoodItem model) {
         holder.textViewTitle.setText(model.getTitle());
-        holder.textViewDescription.setText(model.getDescription());
         holder.textViewPriority.setText(String.valueOf(model.getPriority()));
         Picasso.get().load(model.getPicture()).into(holder.myImageView);
     }
@@ -35,13 +34,11 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
     }
     class FoodHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
-        TextView textViewDescription;
         TextView textViewPriority;
         ImageView myImageView;
         public FoodHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
-            textViewDescription = itemView.findViewById(R.id.text_view_description);
             textViewPriority = itemView.findViewById(R.id.text_view_priority);
             myImageView = itemView.findViewById(R.id.myImageView);
 

@@ -5,24 +5,31 @@ import android.os.Parcelable;
 
 public class FoodItem implements Parcelable {
     private String title;
-    private String description;
+    private String canningMethod;
+    private String dryingMethod;
+    private String freezingMethod;
     private int priority;
     private String picture;
+
 
     public FoodItem() {
         //empty constructor needed
     }
 
-    public FoodItem(String title, String description, int priority, String picture) {
+    public FoodItem(String title, String canningMethod, String dryingMethod, String freezingMethod, int priority, String picture) {
         this.title = title;
-        this.description = description;
+        this.canningMethod = canningMethod;
+        this.dryingMethod = dryingMethod;
+        this.freezingMethod = freezingMethod;
         this.priority = priority;
         this.picture = picture;
     }
 
     protected FoodItem(Parcel in) {
         title = in.readString();
-        description = in.readString();
+        canningMethod = in.readString();
+        dryingMethod = in.readString();
+        freezingMethod = in.readString();
         priority = in.readInt();
         picture = in.readString();
     }
@@ -43,8 +50,16 @@ public class FoodItem implements Parcelable {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCanningMethod() {
+        return canningMethod;
+    }
+
+    public String getDryingMethod() {
+        return dryingMethod;
+    }
+
+    public String getFreezingMethod() {
+        return freezingMethod;
     }
 
     public int getPriority() {
@@ -61,7 +76,9 @@ public class FoodItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(description);
+        dest.writeString(canningMethod);
+        dest.writeString(dryingMethod);
+        dest.writeString(freezingMethod);
         dest.writeInt(priority);
         dest.writeString(picture);
     }
