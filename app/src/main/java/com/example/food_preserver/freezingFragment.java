@@ -148,13 +148,13 @@ public class freezingFragment extends Fragment {
             }
             i++;
         }
-
+/*
         String freezing = foodList.get(value).getFreezingMethod();
 
         freezingDetails = v.findViewById(R.id.freezing);
 
         freezingDetails.setText(freezing);
-
+*/
         return v;
     }
 

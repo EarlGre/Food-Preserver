@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -27,7 +28,7 @@ public class Food_item_instructions extends AppCompatActivity{
     TextView nameTV;
     String foodName;
 
-    ArrayList<Food> foodList = new ArrayList<Food>();
+    ArrayList<Food> foodList = new ArrayList<>();
     Food foods;
     int imageURI;
     int vegetable, fruit, meat;
@@ -41,6 +42,31 @@ public class Food_item_instructions extends AppCompatActivity{
         NavHostFragment navHostFragment = (NavHostFragment) this.getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         NavigationUI.setupWithNavController(nav,navHostFragment.getNavController());
 
+        // the sent data will be displayed here depending on which item was clicked
+        nameTV = findViewById(R.id.food_name);
+        foodImage = findViewById(R.id.food_image);
+        nameTV.setText(getIntent().getStringExtra("id"));
+        FoodItem foodPicture = getIntent().getParcelableExtra("food");
+        assert foodPicture != null;
+        Picasso.get().load(foodPicture.getPicture()).into(foodImage);
+
+
+
+
+
+
+
+
+
+/*
+        if (getIntent().hasExtra("EXTRAS_KEY")) {
+            TextView foodName =  (TextView) findViewById(R.id.food_name);
+
+        }
+
+*/
+
+/*
         try {
             InputStream inputStream = getAssets().open("vegetablesv1.xml");
             XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
@@ -104,6 +130,8 @@ public class Food_item_instructions extends AppCompatActivity{
 
         nameTV.setText(name);
         foodImage.setImageResource(image);
+
+ */
     }
 
 }

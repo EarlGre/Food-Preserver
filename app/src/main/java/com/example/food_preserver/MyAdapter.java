@@ -114,4 +114,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
             itemView.setOnClickListener(mOnItemClickListener);
         }
     }
+
+
 }
+

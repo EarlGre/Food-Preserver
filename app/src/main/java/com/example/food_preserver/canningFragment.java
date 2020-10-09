@@ -150,12 +150,14 @@ public class canningFragment extends Fragment {
             }
             i++;
         }
+/*
+       String canning = foodList.get(value).getCanningMethod();
 
-        String canning = foodList.get(value).getCanningMethod();
+       canningDetails = v.findViewById(R.id.canning);
 
-        canningDetails = v.findViewById(R.id.canning);
+       canningDetails.setText(canning);
 
-        canningDetails.setText(canning);
+ */
 
         return v;
     }

@@ -144,13 +144,13 @@ public class dryingFragment extends Fragment {
         }
 
         String drying = "";
-
+/*
         drying = foodList.get(value).getDryingMethod();
 
         dryingDetails = v.findViewById(R.id.drying);
 
         dryingDetails.setText(drying);
-
+*/
         return v;
     }
 
