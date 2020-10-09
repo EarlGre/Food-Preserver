@@ -1,6 +1,5 @@
 package com.example.food_preserver;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -16,8 +15,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-
-import java.util.ArrayList;
 
 
 /**
@@ -114,18 +111,24 @@ public class FirstFragment extends Fragment {
                 bundle.putString("path", path);
                 bundle.putParcelable("food", food);
 
-                Intent intent = new Intent(getContext(), Food_item_instructions.class);
+                Intent intent = new Intent(getContext(), FoodItemInstructions.class);
                 intent.putExtra("id", id);
                 intent.putExtra("food", food);
                 startActivity(intent);
+
+                Intent intent2 = new Intent(getContext(), canningFragment.class);
+                intent2.putExtra("id", id);
+                intent2.putExtra("food", food);
+
+
             }
         });
 
         return view;
 
 
-        // XML PULLER CODE & RECYCLE VIEW
-        /*
+        /*  XML PULLER CODE & RECYCLE VIEW
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
@@ -182,9 +185,7 @@ public class FirstFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
-
          */
-
     }
 
     @Override

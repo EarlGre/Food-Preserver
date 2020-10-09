@@ -22,17 +22,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class Food_item_instructions extends AppCompatActivity{
+public class FoodItemInstructions extends AppCompatActivity{
 
     ImageView foodImage;
     TextView nameTV;
-    String foodName;
 
+/*
+    String foodName;
     ArrayList<Food> foodList = new ArrayList<>();
     Food foods;
     int imageURI;
     int vegetable, fruit, meat;
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +56,6 @@ public class Food_item_instructions extends AppCompatActivity{
 
 
 
-
-
-
-/*
-        if (getIntent().hasExtra("EXTRAS_KEY")) {
-            TextView foodName =  (TextView) findViewById(R.id.food_name);
-
-        }
-
-*/
 
 /*
         try {
@@ -133,5 +124,4 @@ public class Food_item_instructions extends AppCompatActivity{
 
  */
     }
-
 }

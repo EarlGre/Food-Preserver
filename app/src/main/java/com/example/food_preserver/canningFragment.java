@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -31,10 +32,11 @@ public class canningFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_TEXT = "argText";
     private static final String ARG_NUMBER = "argNumber";
+    /*
     ArrayList<Food> foodList = new ArrayList<>();
     Food foods;
     int vegetable, fruit, meat;
-
+    */
     TextView canningDetails;
 
     // TODO: Rename and change types of parameters
@@ -70,7 +72,7 @@ public class canningFragment extends Fragment {
             text = getArguments().getString(ARG_TEXT);
             number = getArguments().getInt(ARG_NUMBER);
         }
-
+/*
         try {
             InputStream inputStream = getActivity().getAssets().open("vegetablesv1.xml");
             XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
@@ -121,22 +123,28 @@ public class canningFragment extends Fragment {
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
-
+        */
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View v = inflater.inflate(R.layout.fragment_canning, container, false);
         // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_canning, container, false);
 
+        // text from description field is read into the fragment
+        canningDetails = v.findViewById(R.id.canning);
+        FoodItem details = getActivity().getIntent().getParcelableExtra("food");
+        canningDetails.setText(details.getDescription());
+
+
+
+/*
         Bundle bundle = getActivity().getIntent().getExtras();
 
         String name = bundle.getString("name");
@@ -150,15 +158,17 @@ public class canningFragment extends Fragment {
             }
             i++;
         }
-/*
+
        String canning = foodList.get(value).getCanningMethod();
 
        canningDetails = v.findViewById(R.id.canning);
 
        canningDetails.setText(canning);
 
- */
 
+
+
+ */
         return v;
     }
 }

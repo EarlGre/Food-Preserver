@@ -49,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
                 int image = foodList.get(position).getImage();
                 String name = foodList.get(position).getName();
                 final Intent intent;
-                intent = new Intent(context, Food_item_instructions.class);
+                intent = new Intent(context, FoodItemInstructions.class);
                 intent.putExtra("image", image);
                 intent.putExtra("name", name);
                 context.startActivity(intent);

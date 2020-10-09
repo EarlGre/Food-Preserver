@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Food_item_instructions"
+        <activity android:name=".FoodItemInstructions"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".SearchActivity"
                   android:theme="@style/SearchActivityTheme"
