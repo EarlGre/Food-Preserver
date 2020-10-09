@@ -130,6 +130,9 @@ public class ThirdFragment extends Fragment {
                 intent2.putExtra("id", id);
                 intent2.putExtra("food", food);
 
+                // override the transition for each activity
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 

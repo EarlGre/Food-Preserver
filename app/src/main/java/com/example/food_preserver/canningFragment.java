@@ -132,7 +132,6 @@ public class canningFragment extends Fragment {
         canningDetails.setText(details.getCanningMethod());
 
 
-
 /*
         Bundle bundle = getActivity().getIntent().getExtras();
 
