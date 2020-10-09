@@ -15,6 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+public class MyAdapter {
+
+    // empty. Probably delete this class later
+
+
+}
+
+
+
+
+/*
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> implements Filterable {
 
      List<Food> foodList;
@@ -117,4 +128,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> impl
 
 
 }
-
+*/

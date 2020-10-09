@@ -1,5 +1,6 @@
 package com.example.food_preserver;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -97,11 +98,30 @@ public class SecondFragment extends Fragment {
         adapter.setOnItemClickListener(new FoodAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Food note = documentSnapshot.toObject(Food.class);
+                FoodItem food = documentSnapshot.toObject(FoodItem.class);
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath();
                 Toast.makeText(getActivity(),
                         "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+
+
+                // Code for implementing new activity using the document ID
+                Bundle bundle = new Bundle();
+                bundle.putString("id", id);
+                bundle.putString("path", path);
+                bundle.putParcelable("food", food);
+
+                // sends data to the foodItemInstruction class
+                Intent intent = new Intent(getContext(), FoodItemInstructions.class);
+                intent.putExtra("id", id);
+                intent.putExtra("food", food);
+                startActivity(intent);
+
+                // sends data to the drying fragment class
+                Intent intent2 = new Intent(getContext(), dryingFragment.class);
+                intent2.putExtra("id", id);
+                intent2.putExtra("food", food);
+
             }
         });
 

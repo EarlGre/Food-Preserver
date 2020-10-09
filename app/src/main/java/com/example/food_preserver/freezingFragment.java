@@ -32,10 +32,15 @@ public class freezingFragment extends Fragment {
 
     private static final String ARG_TEXT = "argText";
     private static final String ARG_NUMBER = "argNumber";
+
+
+    /*
     ArrayList<Food> foodList = new ArrayList<>();
     Food foods;
-    TextView freezingDetails;
     int vegetable, fruit, meat;
+     */
+
+    TextView freezingDetails;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -70,7 +75,7 @@ public class freezingFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
+/*
         try {
             InputStream inputStream = getActivity().getAssets().open("vegetablesv1.xml");
             XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
@@ -121,6 +126,8 @@ public class freezingFragment extends Fragment {
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
+
+ */
     }
 
     @Override
@@ -129,6 +136,16 @@ public class freezingFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_freezing, container, false);
 
+        freezingDetails = v.findViewById(R.id.freezing);
+        FoodItem details = getActivity().getIntent().getParcelableExtra("food");
+        freezingDetails.setText(details.getDescription());
+
+
+
+
+
+
+/*
         Bundle bundle = getActivity().getIntent().getExtras();
 
         Intent intent = getActivity().getIntent();
@@ -148,7 +165,7 @@ public class freezingFragment extends Fragment {
             }
             i++;
         }
-/*
+
         String freezing = foodList.get(value).getFreezingMethod();
 
         freezingDetails = v.findViewById(R.id.freezing);

@@ -32,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+/*
         foodList = new ArrayList<>();
 
         try {
@@ -131,6 +131,8 @@ public class SearchActivity extends AppCompatActivity {
 
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
+
+ */
     }
 
 }

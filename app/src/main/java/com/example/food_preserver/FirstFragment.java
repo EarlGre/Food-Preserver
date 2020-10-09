@@ -111,15 +111,16 @@ public class FirstFragment extends Fragment {
                 bundle.putString("path", path);
                 bundle.putParcelable("food", food);
 
+                // sends data to the foodItemInstruction class
                 Intent intent = new Intent(getContext(), FoodItemInstructions.class);
                 intent.putExtra("id", id);
                 intent.putExtra("food", food);
                 startActivity(intent);
 
+                // sends data to the canning fragment class
                 Intent intent2 = new Intent(getContext(), canningFragment.class);
                 intent2.putExtra("id", id);
                 intent2.putExtra("food", food);
-
 
             }
         });

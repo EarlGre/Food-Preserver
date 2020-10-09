@@ -32,10 +32,14 @@ public class dryingFragment extends Fragment {
 
     private static final String ARG_TEXT = "argText";
     private static final String ARG_NUMBER = "argNumber";
+
+    TextView dryingDetails;
+
+    /*
     ArrayList<Food> foodList = new ArrayList<>();
     Food foods;
-    TextView dryingDetails;
     int vegetable, fruit, meat;
+    */
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -70,7 +74,7 @@ public class dryingFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
+/*
         try {
             InputStream inputStream = getActivity().getAssets().open("vegetablesv1.xml");
             XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
@@ -121,6 +125,8 @@ public class dryingFragment extends Fragment {
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
+
+ */
     }
 
     @Override
@@ -129,6 +135,13 @@ public class dryingFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_drying, container, false);
 
+        dryingDetails = v.findViewById(R.id.drying);
+        FoodItem details = getActivity().getIntent().getParcelableExtra("food");
+        dryingDetails.setText(details.getDescription());
+
+
+
+/*
         Bundle bundle = getActivity().getIntent().getExtras();
 
         String name = bundle.getString("name");
@@ -144,7 +157,7 @@ public class dryingFragment extends Fragment {
         }
 
         String drying = "";
-/*
+
         drying = foodList.get(value).getDryingMethod();
 
         dryingDetails = v.findViewById(R.id.drying);

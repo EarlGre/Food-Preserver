@@ -1,6 +1,8 @@
 package com.example.food_preserver;
 
 public class Food {
+
+    /*
     private String name;
     private String canningMethod;
     private String freezingMethod;
@@ -39,7 +41,7 @@ public class Food {
         this.freezingUrl = freezingUrl;
         this.freezingUrl = dryingUrl;
     } */
-
+/*
     public String getName() {
         return name;
     }
@@ -133,4 +135,6 @@ public class Food {
                 ", type='" + type + '\'' +
                 '}';
     }
+
+    */
 }
