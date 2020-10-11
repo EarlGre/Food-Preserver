@@ -128,7 +128,9 @@ public class dryingFragment extends Fragment {
 
         dryingDetails = v.findViewById(R.id.drying);
         FoodItem details = getActivity().getIntent().getParcelableExtra("food");
-        dryingDetails.setText(details.getDryingMethod());
+        String replacement = details.getDryingMethod().replaceAll("\\\\n", "\n");
+        dryingDetails.setText(replacement);
+     // dryingDetails.setText(details.getDryingMethod());
 
 
 

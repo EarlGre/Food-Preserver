@@ -129,7 +129,10 @@ public class freezingFragment extends Fragment {
 
         freezingDetails = v.findViewById(R.id.freezing);
         FoodItem details = getActivity().getIntent().getParcelableExtra("food");
-        freezingDetails.setText(details.getFreezingMethod());
+        String replacement = details.getFreezingMethod().replaceAll("\\\\n", "\n");
+        freezingDetails.setText(replacement);
+
+    //  freezingDetails.setText(details.getFreezingMethod());
 
 
 
