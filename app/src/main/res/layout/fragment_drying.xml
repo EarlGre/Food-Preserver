@@ -20,9 +20,10 @@
                 android:id="@+id/drying"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/open_sans"
+                android:fontFamily="sans-serif-black"
+                android:lineSpacingExtra="10sp"
                 android:text="@string/large_text"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
