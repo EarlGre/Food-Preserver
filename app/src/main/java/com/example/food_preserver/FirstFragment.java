@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Handler;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +36,8 @@ public class FirstFragment extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference FruitRef = db.collection("Fruit");
     private FoodAdapter adapter;
+    private Parcelable mListState;
+    private Bundle mBundleRecyclerViewState;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -43,6 +48,7 @@ public class FirstFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public FirstFragment() {
 
@@ -192,15 +198,36 @@ public class FirstFragment extends Fragment {
          */
     }
 
-    @Override
+    @Override  // starts listening to the database
     public void onStart() {
         super.onStart();
         adapter.startListening();
     }
 
-    @Override
+    @Override   // stops listening to the database
     public void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override  // saves the state of the fragment
+    public void onPause() {
+        super.onPause();
+        mBundleRecyclerViewState = new Bundle();
+        mListState = recyclerView.getLayoutManager().onSaveInstanceState();
+      //  mBundleRecyclerViewState.putParcelable("KEY_RECYCLER_STATE", mListState);
+    }
+
+    @Override  // calls the state saved of the fragment
+    public void onResume() {
+        super.onResume();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               // mListState = mBundleRecyclerViewState.getParcelable("KEY_RECYCLER_STATE");
+                recyclerView.getLayoutManager().onRestoreInstanceState(mListState);
+            }
+        }, 50);
+       // recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 }
