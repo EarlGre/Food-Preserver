@@ -59,9 +59,19 @@ public class FourthFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        //load in TinyDB (The sharedPreferences life saver of the gods)
         final TinyDB tinydb = new TinyDB(getActivity());
         favourites = tinydb.getListString("allFavourites");
-        Log.d("myTag", Arrays.toString(favourites.toArray()));
+
+        //printing out list of favourited items in Debug Logcat under tag "myTag"
+        Log.d("myTag", Arrays.toString(favourites.toArray())); //line to be remove later
+
+//        //example of how to pull item name ("Apples", "Apricots", "Avocados" etc.):
+//        favourites.get(0);
+//        //very easy to use (standard arraylist stuff), maybe get all elements for the adapter with a for loop like this?
+//        for (int i = 0; i < favourites.size(); i++) {
+//            favourites.get(i);
+//        }
     }
 
     @Override

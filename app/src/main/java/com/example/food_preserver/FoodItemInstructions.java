@@ -55,34 +55,39 @@ public class FoodItemInstructions extends AppCompatActivity {
 
         //load in TinyDB (The sharedPreferences life saver of the gods)
         final TinyDB tinydb = new TinyDB(getApplicationContext());
-        String datastring = tinydb.getString((String) nameTV.getText());
         favourites = tinydb.getListString("allFavourites");
 
+        //check if item is already favourited (when loading activity) and display favourited star variant if it's favourited
+        String datastring = tinydb.getString((String) nameTV.getText());
         if (datastring.equals("favourited")) {
             favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
             isFavourited = true;
         }
 
         //when user clicks the favourites button
-        favouriteButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (!isFavourited) {
-                    favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
-                    isFavourited = true;
-                    Toast.makeText(getApplicationContext(), nameTV.getText() + " Favourited", Toast.LENGTH_SHORT).show();
-                    tinydb.putString((String) nameTV.getText(), "favourited");
-                    favourites.add((String) nameTV.getText());
-                    tinydb.putListString("allFavourites", favourites);
-                } else {
-                    favouriteButton.setColorFilter(Color.GRAY);
-                    isFavourited = false;
-                    Toast.makeText(getApplicationContext(), nameTV.getText() + " Unfavourited", Toast.LENGTH_SHORT).show();
-                    tinydb.putString((String) nameTV.getText(), "unfavourited");
-                    String delete = (String) nameTV.getText();
-                    favourites.remove(delete);
-                    tinydb.putListString("allFavourites", favourites);
-                }
+        favouriteButton.setOnClickListener(v -> {
+            if (!isFavourited) {
+                //display favourited star variant
+                favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
+                isFavourited = true;
+                Toast.makeText(getApplicationContext(), nameTV.getText() + " Favourited", Toast.LENGTH_SHORT).show();
+
+                //save individual item as favourited and add to arraylist of favourited items
+                tinydb.putString((String) nameTV.getText(), "favourited");
+                favourites.add((String) nameTV.getText());
+            } else {
+                //display unfavourited star variant
+                favouriteButton.setColorFilter(Color.GRAY);
+                isFavourited = false;
+                Toast.makeText(getApplicationContext(), nameTV.getText() + " Unfavourited", Toast.LENGTH_SHORT).show();
+
+                //save individual item as unfavourited and remove item from arraylist of favourited items
+                tinydb.putString((String) nameTV.getText(), "unfavourited");
+                String delete = (String) nameTV.getText();
+                favourites.remove(delete);
             }
+            //save all changes to arraylist of favourited items
+            tinydb.putListString("allFavourites", favourites);
         });
 
 /*
