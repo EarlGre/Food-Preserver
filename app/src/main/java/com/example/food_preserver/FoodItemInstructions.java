@@ -6,10 +6,17 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
@@ -26,6 +33,8 @@ public class FoodItemInstructions extends AppCompatActivity{
 
     ImageView foodImage;
     TextView nameTV;
+    ImageButton favouriteButton;
+    boolean isFavourited = false;
 
 /*
     String foodName;
@@ -46,12 +55,28 @@ public class FoodItemInstructions extends AppCompatActivity{
         // the sent data will be displayed here depending on which item was clicked
         nameTV = findViewById(R.id.food_name);
         foodImage = findViewById(R.id.food_image);
+        favouriteButton = findViewById(R.id.favouriteButton);
         nameTV.setText(getIntent().getStringExtra("id"));
         FoodItem foodPicture = getIntent().getParcelableExtra("food");
         assert foodPicture != null;
         Picasso.get().load(foodPicture.getPicture()).into(foodImage);
 
+        //when user clicks the favourites button
+        favouriteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(!isFavourited) {
+                    favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
+                    isFavourited = true;
+//                    Toast.makeText(this, "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Item Favourited", Toast.LENGTH_SHORT).show();
+                } else {
+                    favouriteButton.setColorFilter(Color.GRAY);
+                    isFavourited = false;
+                    Toast.makeText(getApplicationContext(), "Item Unfavourited", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        });
 
 
 

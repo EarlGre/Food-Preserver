@@ -50,11 +50,11 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
                     if (position != RecyclerView.NO_POSITION && listener != null) {
                         listener.onItemClick(getSnapshots().getSnapshot(position), position);
                     }
-
                 }
             });
         }
     }
+
     // methods for on click listener for adapter
     public interface OnItemClickListener {
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
