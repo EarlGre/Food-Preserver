@@ -2,6 +2,7 @@ package com.example.food_preserver;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -15,11 +16,16 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class FoodItemInstructions extends AppCompatActivity {
 
     ImageView foodImage;
     TextView nameTV;
     ImageButton favouriteButton;
+    ArrayList<String> favourites = new ArrayList<>();
     boolean isFavourited = false;
 
     /*
@@ -50,9 +56,13 @@ public class FoodItemInstructions extends AppCompatActivity {
         //load in TinyDB (The sharedPreferences life saver of the gods)
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         String datastring = tinydb.getString((String) nameTV.getText());
+        favourites = tinydb.getListString("allFavourites");
+
         if (datastring.equals("favourited")) {
             favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
             isFavourited = true;
+            favourites.add((String) nameTV.getText());
+            tinydb.putListString("allFavourites", favourites);
         }
 
         //when user clicks the favourites button
@@ -63,11 +73,16 @@ public class FoodItemInstructions extends AppCompatActivity {
                     isFavourited = true;
                     Toast.makeText(getApplicationContext(), nameTV.getText() + " Favourited", Toast.LENGTH_SHORT).show();
                     tinydb.putString((String) nameTV.getText(), "favourited");
+                    favourites.add((String) nameTV.getText());
+                    tinydb.putListString("allFavourites", favourites);
                 } else {
                     favouriteButton.setColorFilter(Color.GRAY);
                     isFavourited = false;
                     Toast.makeText(getApplicationContext(), nameTV.getText() + " Unfavourited", Toast.LENGTH_SHORT).show();
                     tinydb.putString((String) nameTV.getText(), "unfavourited");
+                    String delete = (String) nameTV.getText();
+                    favourites.removeIf(e -> e.contains(delete));
+                    tinydb.putListString("allFavourites", favourites);
                 }
             }
         });
@@ -146,11 +161,14 @@ public class FoodItemInstructions extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
+    //following functions are required to make the sharedPreferences data persistent
     @Override
     public void onResume() {
         super.onResume();
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         String datastring = tinydb.getString((String) nameTV.getText());
+        ArrayList<String> dataarray = new ArrayList<>();
+        dataarray = tinydb.getListString("allFavourites");
     }
 
     @Override
@@ -158,6 +176,8 @@ public class FoodItemInstructions extends AppCompatActivity {
         super.onStart();
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         String datastring = tinydb.getString((String) nameTV.getText());
+        ArrayList<String> dataarray = new ArrayList<>();
+        dataarray = tinydb.getListString("allFavourites");
     }
 
     @Override
@@ -165,14 +185,17 @@ public class FoodItemInstructions extends AppCompatActivity {
         super.onRestart();
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         String datastring = tinydb.getString((String) nameTV.getText());
+        ArrayList<String> dataarray = new ArrayList<>();
+        dataarray = tinydb.getListString("allFavourites");
     }
-
 
     @Override
     protected void onPause() {
         super.onPause();
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         String datastring = tinydb.getString((String) nameTV.getText());
+        ArrayList<String> dataarray = new ArrayList<>();
+        dataarray = tinydb.getListString("allFavourites");
     }
 
     @Override
@@ -180,5 +203,7 @@ public class FoodItemInstructions extends AppCompatActivity {
         super.onStop();
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         String datastring = tinydb.getString((String) nameTV.getText());
+        ArrayList<String> dataarray = new ArrayList<>();
+        dataarray = tinydb.getListString("allFavourites");
     }
 }

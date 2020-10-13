@@ -2,9 +2,14 @@ package com.example.food_preserver;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -21,6 +26,8 @@ public class FourthFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ArrayList<String> favourites = new ArrayList<>();
 
     public FourthFragment() {
         // Required empty public constructor
@@ -51,6 +58,10 @@ public class FourthFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        final TinyDB tinydb = new TinyDB(getActivity());
+        favourites = tinydb.getListString("allFavourites");
+        Log.d("myTag", Arrays.toString(favourites.toArray()));
     }
 
     @Override
@@ -58,6 +69,5 @@ public class FourthFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fourth, container, false);
-
     }
 }
