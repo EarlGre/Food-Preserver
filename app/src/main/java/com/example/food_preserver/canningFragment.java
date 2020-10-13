@@ -126,10 +126,13 @@ public class canningFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_canning, container, false);
 
+
         // text from description field is read into the fragment
         canningDetails = v.findViewById(R.id.canning);
         FoodItem details = getActivity().getIntent().getParcelableExtra("food");
-        canningDetails.setText(details.getCanningMethod());
+        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
+        canningDetails.setText(replacement);
+   //   canningDetails.setText(details.getCanningMethod());
 
 
 /*
@@ -152,9 +155,6 @@ public class canningFragment extends Fragment {
        canningDetails = v.findViewById(R.id.canning);
 
        canningDetails.setText(canning);
-
-
-
 
  */
         return v;

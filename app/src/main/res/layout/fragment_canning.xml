@@ -10,8 +10,10 @@
         android:id="@+id/canning"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fontFamily="@font/open_sans"
+        android:editable="false"
+        android:fontFamily="sans-serif-black"
+        android:lineSpacingExtra="10sp"
         android:text="@string/large_text"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
 </androidx.core.widget.NestedScrollView>
