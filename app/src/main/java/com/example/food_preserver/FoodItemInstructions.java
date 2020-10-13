@@ -1,7 +1,5 @@
 package com.example.food_preserver;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,11 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.prefs.Preferences;
 
 public class FoodItemInstructions extends AppCompatActivity {
 
@@ -56,7 +50,7 @@ public class FoodItemInstructions extends AppCompatActivity {
         //load in TinyDB (The sharedPreferences life saver of the gods)
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         String datastring = tinydb.getString((String) nameTV.getText());
-        if(datastring == "favourited") {
+        if (datastring.equals("favourited")) {
             favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
             isFavourited = true;
         }
@@ -150,5 +144,41 @@ public class FoodItemInstructions extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        final TinyDB tinydb = new TinyDB(getApplicationContext());
+        String datastring = tinydb.getString((String) nameTV.getText());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        final TinyDB tinydb = new TinyDB(getApplicationContext());
+        String datastring = tinydb.getString((String) nameTV.getText());
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        final TinyDB tinydb = new TinyDB(getApplicationContext());
+        String datastring = tinydb.getString((String) nameTV.getText());
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        final TinyDB tinydb = new TinyDB(getApplicationContext());
+        String datastring = tinydb.getString((String) nameTV.getText());
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        final TinyDB tinydb = new TinyDB(getApplicationContext());
+        String datastring = tinydb.getString((String) nameTV.getText());
     }
 }
