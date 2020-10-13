@@ -61,8 +61,6 @@ public class FoodItemInstructions extends AppCompatActivity {
         if (datastring.equals("favourited")) {
             favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
             isFavourited = true;
-            favourites.add((String) nameTV.getText());
-            tinydb.putListString("allFavourites", favourites);
         }
 
         //when user clicks the favourites button
@@ -81,7 +79,7 @@ public class FoodItemInstructions extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), nameTV.getText() + " Unfavourited", Toast.LENGTH_SHORT).show();
                     tinydb.putString((String) nameTV.getText(), "unfavourited");
                     String delete = (String) nameTV.getText();
-                    favourites.removeIf(e -> e.contains(delete));
+                    favourites.remove(delete);
                     tinydb.putListString("allFavourites", favourites);
                 }
             }
