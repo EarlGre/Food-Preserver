@@ -10,19 +10,21 @@ public class FoodItem implements Parcelable {
     private String freezingMethod;
     private int priority;
     private String picture;
+    private String type;
 
 
     public FoodItem() {
         //empty constructor needed
     }
 
-    public FoodItem(String title, String canningMethod, String dryingMethod, String freezingMethod, int priority, String picture) {
+    public FoodItem(String title, String canningMethod, String dryingMethod, String freezingMethod, int priority, String picture, String type) {
         this.title = title;
         this.canningMethod = canningMethod;
         this.dryingMethod = dryingMethod;
         this.freezingMethod = freezingMethod;
         this.priority = priority;
         this.picture = picture;
+        this.type = type;
     }
 
     protected FoodItem(Parcel in) {
@@ -81,6 +83,7 @@ public class FoodItem implements Parcelable {
         dest.writeString(freezingMethod);
         dest.writeInt(priority);
         dest.writeString(picture);
+        dest.writeString(type);
     }
 }
 

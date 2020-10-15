@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1057626749027-ok2i5halg5edc811g9kuqesqqtlimiho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.food_preserver",
+            "certificate_hash": "edfd90018a5a2c423ef27de2c315f6098457789d"
+          }
+        },
+        {
           "client_id": "1057626749027-jb8or13egjc8p6e2102hlsfcgoug7kml.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

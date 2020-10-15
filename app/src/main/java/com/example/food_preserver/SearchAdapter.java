@@ -12,14 +12,68 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdapter {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchHolder> {
+    private OnItemClickListener listener;
+    ArrayList<FoodItem> options;
+    public SearchAdapter(@NonNull ArrayList<FoodItem> options) {
+        this.options = options;
+    }
+    @Override
+    public void onBindViewHolder(@NonNull SearchHolder holder, int position) {
+        holder.textViewTitle.setText(options.get(position).getTitle());
+    }
+    @NonNull
+    @Override
+    public SearchHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item,
+                parent, false);
+        return new SearchHolder(v);
+    }
+    class SearchHolder extends RecyclerView.ViewHolder {
+        TextView textViewTitle;
+//        TextView textViewPriority;
+//        ImageView myImageView;
+        public SearchHolder(View itemView) {
+            super(itemView);
+            textViewTitle = itemView.findViewById(R.id.text_view_title);
+//            textViewPriority = itemView.findViewById(R.id.text_view_priority);
+//            myImageView = itemView.findViewById(R.id.myImageView);
 
-    // empty. Probably delete this class later
+            // Onclick listener implementation for adapter
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    int position = getAdapterPosition();
+//                    if (position != RecyclerView.NO_POSITION && listener != null) {
+//                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+//                    }
+//                }
+//            });
+        }
+    }
 
+    @Override
+    public int getItemCount() {
+        return options.size();
+    }
 
+    // methods for on click listener for adapter
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    // methods for on click listener for adapter
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 }
 
 
