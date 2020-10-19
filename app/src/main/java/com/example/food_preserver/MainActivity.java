@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Ham menu is clickable
-        ImageView hamIcon = findViewById(R.id.HamMenu);
+        ImageView hamIcon = findViewById(R.id.LogoMenu);
         hamIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
