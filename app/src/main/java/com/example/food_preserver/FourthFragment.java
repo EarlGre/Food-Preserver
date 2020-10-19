@@ -2,11 +2,18 @@ package com.example.food_preserver;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,6 +35,10 @@ public class FourthFragment extends Fragment {
     private String mParam2;
 
     ArrayList<String> favourites = new ArrayList<>();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference FruitRef = db.collection("Food 2.0");
+    RecyclerView recyclerView;
+    private FoodAdapter adapter;
 
     public FourthFragment() {
         // Required empty public constructor
@@ -78,6 +89,32 @@ public class FourthFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fourth, container, false);
+        View view =  inflater.inflate(R.layout.fragment_first, container, false);
+
+        Query query = FruitRef.orderBy("priority", Query.Direction.ASCENDING);
+        FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                .setQuery(query, FoodItem.class)
+                .build();
+
+        recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
+        adapter = new FoodAdapter(options);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+
 }
