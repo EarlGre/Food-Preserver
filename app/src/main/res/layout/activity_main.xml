@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menu"
+    android:background="@drawable/alt_bkgdmenu"
     tools:context=".MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -16,14 +16,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176"
+        app:layout_constraintVertical_bias="0.14"
         app:menu="@menu/bottom_menu" />
 
     <fragment
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="409dp"
-        android:layout_height="0dp"
+        android:layout_width="398dp"
+        android:layout_height="507dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,33 +42,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326" />
 
     <ImageView
         android:id="@+id/LogoMenu"
         android:layout_width="39dp"
         android:layout_height="57dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
         android:tint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintStart_toEndOf="@+id/LogoTextMenu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_food_whortleberry_jelly_1" />
-
-    <ImageView
-        android:id="@+id/HamMenu"
-        android:layout_width="54dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:tint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toStartOf="@+id/LogoTextMenu"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.455"
-        app:srcCompat="@drawable/ic_menu_black_24dp" />
+        app:srcCompat="@drawable/ic_food_whortleberry_jelly_1" />
 
     <ImageView
         android:id="@+id/SearchIcon"
@@ -77,8 +66,10 @@
         android:tint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/LogoMenu"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@+id/LogoTextMenu"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272"
         app:srcCompat="@drawable/ic_search_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

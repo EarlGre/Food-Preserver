@@ -17,20 +17,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
+            android:layout_width="380dp"
+            android:layout_height="385dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView1"
             app:layout_constraintTop_toBottomOf="@+id/textView1">
 
             <ImageView
                 android:id="@+id/myImageView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="379dp"
+                android:layout_height="276dp"
+                android:layout_marginTop="60dp"
                 android:cropToPadding="false"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@id/text_view_title"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/ic_launcher" />
@@ -55,21 +55,19 @@
 
             <TextView
                 android:id="@+id/text_view_title"
-                android:layout_width="357dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="serif"
+                android:layout_width="376dp"
+                android:layout_height="63dp"
+                android:layout_marginEnd="4dp"
+                android:background="#8A8080"
+                android:fontFamily="cursive"
+                android:gravity="center"
                 android:text="Title"
-                android:textColor="#000000"
-                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.685" />
+                tools:layout_editor_absoluteY="-3dp" />
 
             <TextView
                 android:id="@+id/text_view_priority"
@@ -81,7 +79,8 @@
                 android:text="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
