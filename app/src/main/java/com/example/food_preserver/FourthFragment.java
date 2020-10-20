@@ -85,17 +85,19 @@ public class FourthFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_first, container, false);
 
         //create query and succ out favourites from favourites arraylist brought to you by tinyDB
-        Query query = FruitRef.whereIn("title", favourites).orderBy("priority", Query.Direction.ASCENDING);
+        if(!favourites.isEmpty()) {
+            Query query = FruitRef.whereIn("title", favourites).orderBy("priority", Query.Direction.ASCENDING);
 
-        //display all the goodness into the favourites tab
-        FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
-                .setQuery(query, FoodItem.class)
-                .build();
+            //display all the goodness into the favourites tab
+            FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                    .setQuery(query, FoodItem.class)
+                    .build();
 
-        recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
-        adapter = new FoodAdapter(options);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
+            adapter = new FoodAdapter(options);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }
 
         return view;
     }
@@ -103,13 +105,18 @@ public class FourthFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        adapter.startListening();
+
+        if(!favourites.isEmpty()) {
+            adapter.startListening();
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        if(!favourites.isEmpty()) {
         adapter.stopListening();
+        }
     }
 
 
