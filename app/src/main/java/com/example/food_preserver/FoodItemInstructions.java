@@ -77,7 +77,7 @@ public class FoodItemInstructions extends AppCompatActivity {
                 favourites.add((String) nameTV.getText());
             } else {
                 //display unfavourited star variant
-                favouriteButton.setColorFilter(Color.GRAY);
+                favouriteButton.setColorFilter(Color.parseColor("#FFAAAAAA"));
                 isFavourited = false;
                 Toast.makeText(getApplicationContext(), nameTV.getText() + " Unfavourited", Toast.LENGTH_SHORT).show();
 
