@@ -19,6 +19,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.Objects;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -129,7 +131,7 @@ public class FirstFragment extends Fragment {
                 intent2.putExtra("food", food);
 
                 // override the transition for each activity
-                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
