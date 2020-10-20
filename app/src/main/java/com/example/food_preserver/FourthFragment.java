@@ -75,14 +75,7 @@ public class FourthFragment extends Fragment {
         favourites = tinydb.getListString("allFavourites");
 
         //printing out list of favourited items in Debug Logcat under tag "myTag"
-        Log.d("myTag", Arrays.toString(favourites.toArray())); //line to be remove later
-
-//        //example of how to pull item name ("Apples", "Apricots", "Avocados" etc.):
-//        favourites.get(0);
-//        //very easy to use (standard arraylist stuff), maybe get all elements for the adapter with a for loop like this?
-//        for (int i = 0; i < favourites.size(); i++) {
-//            favourites.get(i);
-//        }
+        Log.d("myTag", Arrays.toString(favourites.toArray())); //line to be remove later lollollololol
     }
 
     @Override
@@ -91,7 +84,10 @@ public class FourthFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_first, container, false);
 
-        Query query = FruitRef.orderBy("priority", Query.Direction.ASCENDING);
+        //create query and succ out favourites from favourites arraylist brought to you by tinyDB
+        Query query = FruitRef.whereIn("title", favourites).orderBy("priority", Query.Direction.ASCENDING);
+
+        //display all the goodness into the favourites tab
         FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
                 .setQuery(query, FoodItem.class)
                 .build();
