@@ -2,8 +2,6 @@ package com.example.food_preserver;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,12 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FoodItemInstructions extends AppCompatActivity {
 
@@ -57,11 +54,16 @@ public class FoodItemInstructions extends AppCompatActivity {
         final TinyDB tinydb = new TinyDB(getApplicationContext());
         favourites = tinydb.getListString("allFavourites");
 
+        //initialize shimmer effect
+        ShimmerFrameLayout star = findViewById(R.id.shimmer_view_container);
+
         //check if item is already favourited (when loading activity) and display favourited star variant if it's favourited
         String datastring = tinydb.getString((String) nameTV.getText());
         if (datastring.equals("favourited")) {
             favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
             isFavourited = true;
+            star.startShimmer();
+            star.showShimmer(true);
         }
 
         //when user clicks the favourites button
@@ -71,6 +73,8 @@ public class FoodItemInstructions extends AppCompatActivity {
                 favouriteButton.setColorFilter(Color.parseColor("#ff9900"));
                 isFavourited = true;
                 Toast.makeText(getApplicationContext(), nameTV.getText() + " Favourited", Toast.LENGTH_SHORT).show();
+                star.startShimmer();
+                star.showShimmer(true);
 
                 //save individual item as favourited and add to arraylist of favourited items
                 tinydb.putString((String) nameTV.getText(), "favourited");
@@ -80,6 +84,8 @@ public class FoodItemInstructions extends AppCompatActivity {
                 favouriteButton.setColorFilter(Color.parseColor("#FFAAAAAA"));
                 isFavourited = false;
                 Toast.makeText(getApplicationContext(), nameTV.getText() + " Unfavourited", Toast.LENGTH_SHORT).show();
+                star.stopShimmer();
+                star.hideShimmer();
 
                 //save individual item as unfavourited and remove item from arraylist of favourited items
                 tinydb.putString((String) nameTV.getText(), "unfavourited");
