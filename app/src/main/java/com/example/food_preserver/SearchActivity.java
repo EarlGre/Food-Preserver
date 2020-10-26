@@ -41,24 +41,68 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    SearchView searchView;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference FruitRef = db.collection("Food 2.0");
+    private FoodAdapter adapter;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+
+        //request for get intent when search button is tapped
+        if (getIntent().hasExtra("com.example.test.SOMETHING")) {
+            TextView tv =  (TextView) findViewById(R.id.textView);
+            String text = getIntent().getExtras().getString("com.example.test.SOMETHING");
+        }
+
+/*
+        recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
+        adapter = new FoodAdapter(options);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+*/
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     //CollectionReference FoodRef = db.collection("Food");
 
     //global variables for recyclerview
+    /*
     RecyclerView recyclerView;
     SearchView searchView;
     //List<Food> foodList;
     ArrayList<FoodItem> list;
     DatabaseReference ref;
-
     private static final String TAG = "FireStoreSearchActivity";
     private static final String FOOD = "birds";
-
     private SearchAdapter searchAdapter;
+
+*/
+
 //    Food foods;
 //    int imageURI;
 //    int vegetable, fruit, meat;
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +111,8 @@ public class SearchActivity extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference().child(FOOD);
         recyclerView = findViewById(R.id.recycler_search);
         searchView = findViewById(R.id.food_name);
+
+ */
 
 //        RecyclerView recyclerView = findViewById(R.id.recycler_search);
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -221,6 +267,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
  */
+    /*
     }
 
     @Override
@@ -291,5 +338,5 @@ public class SearchActivity extends AppCompatActivity {
 //        }
 //        return json;
 //    }
-
+*/
 }

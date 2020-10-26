@@ -34,15 +34,17 @@ public class FourthFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference FruitRef = db.collection("Food 2.0");
+    private FoodAdapter adapter;
     ArrayList<String> favourites = new ArrayList<>();
     RecyclerView recyclerView;
     LayoutInflater globalInflater;
     ViewGroup globalContainer;
     Bundle globalSavedInstanceState;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private FoodAdapter adapter;
+
 
     public FourthFragment() {
         // Required empty public constructor
