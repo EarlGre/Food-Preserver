@@ -2,6 +2,7 @@ package com.example.food_preserver;
 
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +15,14 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
+
 public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.FoodHolder> {
     private OnItemClickListener listener;
     public FoodAdapter(@NonNull FirestoreRecyclerOptions<FoodItem> options) {
         super(options);
     }
+
     @Override
     protected void onBindViewHolder(@NonNull FoodHolder holder, int position, @NonNull FoodItem model) {
         holder.textViewTitle.setText(model.getTitle());
