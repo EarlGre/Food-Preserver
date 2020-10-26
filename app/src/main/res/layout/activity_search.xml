@@ -19,24 +19,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_search"
-        android:layout_width="412dp"
-        android:layout_height="436dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <SearchView
-        android:id="@+id/food_name"
-        android:layout_width="410dp"
-        android:layout_height="55dp"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
