@@ -1,4 +1,5 @@
 package com.example.food_preserver;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -59,26 +60,39 @@ public class SearchActivity extends AppCompatActivity {
             String text = getIntent().getExtras().getString("com.example.test.SOMETHING");
         }
 
-/*
-        recyclerView = view.findViewById(R.id.recyclerView_FirstFragment);
+        Query query = FruitRef.orderBy("priority", Query.Direction.ASCENDING);
+        FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                .setQuery(query, FoodItem.class)
+                .build();
+
+
+        recyclerView = findViewById(R.id.recycler_search);
         adapter = new FoodAdapter(options);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-*/
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
 
+    // override the transition going back in an activity
+    @Override
+    public void finish() {
+        super.finish();
 
-
-
-
-
-
-
-
-
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 
 
 
