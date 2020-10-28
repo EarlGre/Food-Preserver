@@ -1,5 +1,6 @@
 package com.example.food_preserver;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -51,6 +54,41 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new FoodAdapter(options);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //On click listener for items
+        adapter.setOnItemClickListener(new FoodAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                FoodItem food = documentSnapshot.toObject(FoodItem.class);
+                String id = documentSnapshot.getId();
+                String path = documentSnapshot.getReference().getPath();
+                Toast.makeText(getApplicationContext(),
+                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+
+                // Code for implementing new activity using the document ID
+                Bundle bundle = new Bundle();
+                bundle.putString("id", id);
+                bundle.putString("path", path);
+                bundle.putParcelable("food", food);
+
+                // sends data to the foodItemInstruction class
+                Intent intent = new Intent(getApplicationContext(), FoodItemInstructions.class);
+                intent.putExtra("id", id);
+                intent.putExtra("food", food);
+                startActivity(intent);
+
+                // sends data to the canning fragment class
+                Intent intent2 = new Intent(getApplicationContext(), canningFragment.class);
+                intent2.putExtra("id", id);
+                intent2.putExtra("food", food);
+
+                // override the transition for each activity
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+            }
+        });
+
+
 
         EditText searchBox = findViewById(R.id.fireStoreSearchBox);
 
