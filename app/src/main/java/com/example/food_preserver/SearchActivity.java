@@ -1,4 +1,5 @@
 package com.example.food_preserver;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -6,59 +7,163 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.common.api.Api;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference FruitRef = db.collection("Food 2.0");
+    private FoodAdapter adapter;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+
+        //request for get intent when search button is tapped
+        if (getIntent().hasExtra("com.example.test.SOMETHING")) {
+            TextView tv =  (TextView) findViewById(R.id.textView);
+            String text = getIntent().getExtras().getString("com.example.test.SOMETHING");
+        }
+
+        Query query = FruitRef.orderBy("priority", Query.Direction.ASCENDING);
+        FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                .setQuery(query, FoodItem.class)
+                .build();
+
+
+        recyclerView = findViewById(R.id.recycler_search);
+        adapter = new FoodAdapter(options);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        EditText searchBox = findViewById(R.id.fireStoreSearchBox);
+
+        //Gets the typed out text and uses a query from firestore to filter the items
+        searchBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //ignored method
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //ignored method
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //This log is needed. Do not delete
+                Log.d("TAG", "searchBox has changed to" + s.toString());
+                Query query;
+                if (s.toString().isEmpty()) {
+                     query = FruitRef
+                            .orderBy("priority", Query.Direction.ASCENDING);
+                }
+                else {
+                     query = FruitRef
+                            .whereEqualTo("title", s.toString())
+                            .orderBy("priority", Query.Direction.ASCENDING);
+                    FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                            .setQuery(query, FoodItem.class)
+                            .build();
+
+                    adapter.updateOptions(options);
+                }
+                FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
+                        .setQuery(query, FoodItem.class)
+                        .build();
+
+                adapter.updateOptions(options);
+
+            }
+        });
+
+
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+    // override the transition going back in an activity
+    @Override
+    public void finish() {
+        super.finish();
+
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    // search function
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+            //   myAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
 
     //private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     //CollectionReference FoodRef = db.collection("Food");
 
     //global variables for recyclerview
+    /*
     RecyclerView recyclerView;
     SearchView searchView;
     //List<Food> foodList;
     ArrayList<FoodItem> list;
     DatabaseReference ref;
-
     private static final String TAG = "FireStoreSearchActivity";
     private static final String FOOD = "birds";
-
     private SearchAdapter searchAdapter;
+
+*/
+
 //    Food foods;
 //    int imageURI;
 //    int vegetable, fruit, meat;
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +172,8 @@ public class SearchActivity extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference().child(FOOD);
         recyclerView = findViewById(R.id.recycler_search);
         searchView = findViewById(R.id.food_name);
+
+ */
 
 //        RecyclerView recyclerView = findViewById(R.id.recycler_search);
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -221,6 +328,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
  */
+    /*
     }
 
     @Override
@@ -291,5 +399,5 @@ public class SearchActivity extends AppCompatActivity {
 //        }
 //        return json;
 //    }
-
+*/
 }

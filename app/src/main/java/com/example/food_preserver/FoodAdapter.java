@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -17,7 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 
-public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.FoodHolder> {
+public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.FoodHolder> implements Filterable {
     private OnItemClickListener listener;
     public FoodAdapter(@NonNull FirestoreRecyclerOptions<FoodItem> options) {
         super(options);
@@ -36,6 +38,12 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
                 parent, false);
         return new FoodHolder(v);
     }
+
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
+
     class FoodHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
         TextView textViewPriority;
