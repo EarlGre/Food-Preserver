@@ -22,6 +22,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.apache.commons.lang3.text.WordUtils.capitalizeFully;
 
 public class SearchActivity extends AppCompatActivity {
@@ -107,6 +111,7 @@ public class SearchActivity extends AppCompatActivity {
                 //capitalize first letter of each word of user's input
                 final char delimiter = ' ';
                 String userInput = capitalizeFully(String.valueOf(s), delimiter);
+                String[] input = {userInput};
 
                 //This log is needed. Do not delete
                 Log.d("TAG", "searchBox has changed to " + userInput);
@@ -116,7 +121,7 @@ public class SearchActivity extends AppCompatActivity {
                             .orderBy("priority", Query.Direction.ASCENDING);
                 } else {
                     query = FruitRef
-                            .whereEqualTo("title", userInput)
+                            .whereArrayContainsAny("search", Arrays.asList(input))
                             .orderBy("priority", Query.Direction.ASCENDING);
                     FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
                             .setQuery(query, FoodItem.class)
@@ -129,11 +134,8 @@ public class SearchActivity extends AppCompatActivity {
                         .build();
 
                 adapter.updateOptions(options);
-
             }
         });
-
-
     }
 
     @Override
