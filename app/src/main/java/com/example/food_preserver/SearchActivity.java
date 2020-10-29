@@ -22,6 +22,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import static org.apache.commons.lang3.text.WordUtils.capitalizeFully;
+
 public class SearchActivity extends AppCompatActivity {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -102,15 +104,19 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                //capitalize first letter of each word of user's input
+                final char delimiter = ' ';
+                String userInput = capitalizeFully(String.valueOf(s), delimiter);
+
                 //This log is needed. Do not delete
-                Log.d("TAG", "searchBox has changed to" + s.toString());
+                Log.d("TAG", "searchBox has changed to " + userInput);
                 Query query;
                 if (s.toString().isEmpty()) {
                     query = FruitRef
                             .orderBy("priority", Query.Direction.ASCENDING);
                 } else {
                     query = FruitRef
-                            .whereEqualTo("title", s.toString())
+                            .whereEqualTo("title", userInput)
                             .orderBy("priority", Query.Direction.ASCENDING);
                     FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
                             .setQuery(query, FoodItem.class)
