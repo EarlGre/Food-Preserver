@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +24,10 @@ import com.google.firebase.firestore.Query;
 
 public class SearchActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference FruitRef = db.collection("Food 2.0");
+    RecyclerView recyclerView;
     private FoodAdapter adapter;
-
 
 
     @Override
@@ -40,7 +37,7 @@ public class SearchActivity extends AppCompatActivity {
 
         //request for get intent when search button is tapped
         if (getIntent().hasExtra("com.example.test.SOMETHING")) {
-            TextView tv =  (TextView) findViewById(R.id.textView);
+            TextView tv = findViewById(R.id.textView);
             String text = getIntent().getExtras().getString("com.example.test.SOMETHING");
         }
 
@@ -89,7 +86,6 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-
         EditText searchBox = findViewById(R.id.fireStoreSearchBox);
 
         //Gets the typed out text and uses a query from firestore to filter the items
@@ -110,11 +106,10 @@ public class SearchActivity extends AppCompatActivity {
                 Log.d("TAG", "searchBox has changed to" + s.toString());
                 Query query;
                 if (s.toString().isEmpty()) {
-                     query = FruitRef
+                    query = FruitRef
                             .orderBy("priority", Query.Direction.ASCENDING);
-                }
-                else {
-                     query = FruitRef
+                } else {
+                    query = FruitRef
                             .whereEqualTo("title", s.toString())
                             .orderBy("priority", Query.Direction.ASCENDING);
                     FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
@@ -131,9 +126,6 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }
@@ -173,13 +165,12 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-            //   myAdapter.getFilter().filter(newText);
+                //   myAdapter.getFilter().filter(newText);
                 return false;
             }
         });
         return super.onCreateOptionsMenu(menu);
     }
-
 
 
     //private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -243,7 +234,7 @@ public class SearchActivity extends AppCompatActivity {
 //            }
 //        });
 
-                //to import the data from josn to firestore
+    //to import the data from josn to firestore
 //        try {
 //            // get JSONObject from JSON file
 //            JSONObject obj = new JSONObject(loadJSONFromAsset());
