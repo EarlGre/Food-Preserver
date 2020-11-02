@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.14"
         app:menu="@menu/bottom_menu" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="398dp"
@@ -36,7 +36,7 @@
         android:layout_width="155dp"
         android:layout_height="60dp"
         android:fontFamily="@font/princess_sofia"
-        android:text="Preserve It"
+        android:text="@string/preserve_it"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -57,7 +57,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.272"
         app:srcCompat="@drawable/ic_search_black_24dp"
-        app:tint="#FFFFFF" />
+        app:tint="#FFFFFF"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/LogoMenu"
@@ -67,6 +68,7 @@
         app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/jesses_coin_jar" />
+        app:srcCompat="@drawable/jesses_coin_jar"
+        android:contentDescription="@string/todo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
