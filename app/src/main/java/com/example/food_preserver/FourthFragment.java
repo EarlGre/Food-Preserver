@@ -139,12 +139,13 @@ public class FourthFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        //load in TinyDB (The sharedPreferences life saver of the gods)
+        final TinyDB tinydb = new TinyDB(getActivity());
+        favourites = tinydb.getListString("allFavourites");
+
         if (!favourites.isEmpty()) {
             adapter.startListening();
-
-            //load in TinyDB (The sharedPreferences life saver of the gods)
-            final TinyDB tinydb = new TinyDB(getActivity());
-            favourites = tinydb.getListString("allFavourites");
 
             //create query and succ out favourites from favourites arraylist brought to you by tinyDB
             Query query = FruitRef.whereIn("title", favourites).orderBy("priority", Query.Direction.ASCENDING);
