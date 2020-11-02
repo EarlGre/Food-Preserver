@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
                 // override the transition for each activity
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
             }
         });
 
@@ -49,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
 
                 // override the transition for each activity
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-
-                Toast.makeText(MainActivity.this, "Go to Hamburger Activity", Toast.LENGTH_SHORT).show();
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
