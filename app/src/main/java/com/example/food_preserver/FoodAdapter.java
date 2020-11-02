@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 
-public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.FoodHolder> {
+public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.FoodHolder> implements Filterable {
     private OnItemClickListener listener;
     public FoodAdapter(@NonNull FirestoreRecyclerOptions<FoodItem> options) {
         super(options);
@@ -29,12 +29,7 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
     protected void onBindViewHolder(@NonNull FoodHolder holder, int position, @NonNull FoodItem model) {
         holder.textViewTitle.setText(model.getTitle());
         holder.textViewPriority.setText(String.valueOf(model.getPriority()));
-        if (model.getPicture().isEmpty()) {
-            Picasso.get().load(R.mipmap.ic_launcher).into(holder.myImageView);
-        }
-        else {
-            Picasso.get().load(model.getPicture()).into(holder.myImageView);
-        }
+        Picasso.get().load(model.getPicture()).into(holder.myImageView);
     }
     @NonNull
     @Override
@@ -42,6 +37,11 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_item,
                 parent, false);
         return new FoodHolder(v);
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 
     class FoodHolder extends RecyclerView.ViewHolder {

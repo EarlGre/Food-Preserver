@@ -34,9 +34,13 @@ public class FourthFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference FruitRef = db.collection("Food 2.0");
+    private FoodAdapter adapter;
     ArrayList<String> favourites = new ArrayList<>();
     RecyclerView recyclerView;
-    private FoodAdapter adapter;
+    LayoutInflater globalInflater;
+    ViewGroup globalContainer;
+    Bundle globalSavedInstanceState;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -80,6 +84,11 @@ public class FourthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //initialize global variables
+        globalInflater = inflater;
+        globalContainer = container;
+        globalSavedInstanceState = savedInstanceState;
+
         //printing out list of favourited items in Debug Logcat under tag "myTag"
         Log.d("myTag", Arrays.toString(favourites.toArray()) + "Noob"); //line to be remove later lollollololol
 
@@ -141,21 +150,8 @@ public class FourthFragment extends Fragment {
         super.onStart();
         if (!favourites.isEmpty()) {
             adapter.startListening();
-
-            //load in TinyDB (The sharedPreferences life saver of the gods)
-            final TinyDB tinydb = new TinyDB(getActivity());
-            favourites = tinydb.getListString("allFavourites");
-
-            //create query and succ out favourites from favourites arraylist brought to you by tinyDB
-            Query query = FruitRef.whereIn("title", favourites).orderBy("priority", Query.Direction.ASCENDING);
-
-            //display all the goodness into the favourites tab
-            FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
-                    .setQuery(query, FoodItem.class)
-                    .build();
-
-            //update the adapter so when you back out of the food item activity after unfavouriting an item, the favourites tab is updated
-            adapter.updateOptions(options);
+            onCreate(globalSavedInstanceState);
+            onCreateView(globalInflater, globalContainer, globalSavedInstanceState);
         }
     }
 
