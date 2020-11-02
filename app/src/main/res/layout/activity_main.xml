@@ -33,8 +33,8 @@
 
     <TextView
         android:id="@+id/LogoTextMenu"
-        android:layout_width="175dp"
-        android:layout_height="57dp"
+        android:layout_width="155dp"
+        android:layout_height="60dp"
         android:fontFamily="@font/princess_sofia"
         android:text="Preserve It"
         android:textColor="#FFFFFF"
@@ -47,29 +47,26 @@
         app:layout_constraintVertical_bias="0.326" />
 
     <ImageView
-        android:id="@+id/LogoMenu"
-        android:layout_width="39dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="44dp"
-        android:tint="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/LogoTextMenu"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_food_whortleberry_jelly_1" />
-
-    <ImageView
         android:id="@+id/SearchIcon"
         android:layout_width="54dp"
         android:layout_height="51dp"
-        android:tint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/LogoTextMenu"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.272"
-        app:srcCompat="@drawable/ic_search_black_24dp" />
+        app:srcCompat="@drawable/ic_search_black_24dp"
+        app:tint="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/LogoMenu"
+        android:layout_width="58dp"
+        android:layout_height="74dp"
+        app:layout_constraintEnd_toStartOf="@+id/LogoTextMenu"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/jesses_coin_jar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
