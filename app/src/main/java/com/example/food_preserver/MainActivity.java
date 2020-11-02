@@ -39,12 +39,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Ham menu is clickable
+        // Jar icon is clickable
         ImageView hamIcon = findViewById(R.id.LogoMenu);
         hamIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // implement ham activity here?
+                Intent startIntent = new Intent(getApplicationContext(), SearchActivity.class);
+                startIntent.putExtra("com.example.test.SOMETHING2", "Hello world2");
+                startActivity(startIntent);
+
+                // override the transition for each activity
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                 Toast.makeText(MainActivity.this, "Go to Hamburger Activity", Toast.LENGTH_SHORT).show();
             }
         });
