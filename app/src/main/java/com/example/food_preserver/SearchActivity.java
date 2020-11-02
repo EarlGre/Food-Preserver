@@ -1,5 +1,6 @@
 package com.example.food_preserver;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -7,9 +8,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -18,16 +18,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import static org.apache.commons.lang3.text.WordUtils.capitalizeFully;
+
 public class SearchActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference FruitRef = db.collection("Food 2.0");
+    RecyclerView recyclerView;
     private FoodAdapter adapter;
-
 
 
     @Override
@@ -37,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
 
         //request for get intent when search button is tapped
         if (getIntent().hasExtra("com.example.test.SOMETHING")) {
-            TextView tv =  (TextView) findViewById(R.id.textView);
+            TextView tv = findViewById(R.id.textView);
             String text = getIntent().getExtras().getString("com.example.test.SOMETHING");
         }
 
@@ -51,6 +57,40 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new FoodAdapter(options);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //On click listener for items
+        adapter.setOnItemClickListener(new FoodAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                FoodItem food = documentSnapshot.toObject(FoodItem.class);
+                String id = documentSnapshot.getId();
+                String path = documentSnapshot.getReference().getPath();
+                Toast.makeText(getApplicationContext(),
+                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+
+                // Code for implementing new activity using the document ID
+                Bundle bundle = new Bundle();
+                bundle.putString("id", id);
+                bundle.putString("path", path);
+                bundle.putParcelable("food", food);
+
+                // sends data to the foodItemInstruction class
+                Intent intent = new Intent(getApplicationContext(), FoodItemInstructions.class);
+                intent.putExtra("id", id);
+                intent.putExtra("food", food);
+                startActivity(intent);
+
+                // sends data to the canning fragment class
+                Intent intent2 = new Intent(getApplicationContext(), canningFragment.class);
+                intent2.putExtra("id", id);
+                intent2.putExtra("food", food);
+
+                // override the transition for each activity
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+            }
+        });
+
 
         EditText searchBox = findViewById(R.id.fireStoreSearchBox);
 
@@ -68,16 +108,20 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                //capitalize first letter of each word of user's input
+                final char delimiter = ' ';
+                String userInput = capitalizeFully(String.valueOf(s), delimiter);
+                String[] input = {userInput};
+
                 //This log is needed. Do not delete
-                Log.d("TAG", "searchBox has changed to" + s.toString());
+                Log.d("TAG", "searchBox has changed to " + userInput);
                 Query query;
                 if (s.toString().isEmpty()) {
-                     query = FruitRef
+                    query = FruitRef
                             .orderBy("priority", Query.Direction.ASCENDING);
-                }
-                else {
-                     query = FruitRef
-                            .whereEqualTo("title", s.toString())
+                } else {
+                    query = FruitRef
+                            .whereArrayContainsAny("search", Arrays.asList(input))
                             .orderBy("priority", Query.Direction.ASCENDING);
                     FirestoreRecyclerOptions<FoodItem> options = new FirestoreRecyclerOptions.Builder<FoodItem>()
                             .setQuery(query, FoodItem.class)
@@ -90,14 +134,8 @@ public class SearchActivity extends AppCompatActivity {
                         .build();
 
                 adapter.updateOptions(options);
-
             }
         });
-
-
-
-
-
     }
 
     @Override
@@ -135,13 +173,12 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-            //   myAdapter.getFilter().filter(newText);
+                //   myAdapter.getFilter().filter(newText);
                 return false;
             }
         });
         return super.onCreateOptionsMenu(menu);
     }
-
 
 
     //private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -205,7 +242,7 @@ public class SearchActivity extends AppCompatActivity {
 //            }
 //        });
 
-                //to import the data from josn to firestore
+    //to import the data from josn to firestore
 //        try {
 //            // get JSONObject from JSON file
 //            JSONObject obj = new JSONObject(loadJSONFromAsset());
