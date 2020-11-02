@@ -22,9 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 import static org.apache.commons.lang3.text.WordUtils.capitalizeFully;
 
@@ -156,28 +154,6 @@ public class SearchActivity extends AppCompatActivity {
         super.finish();
 
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-
-    // search function
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) item.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //   myAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
     }
 
 
