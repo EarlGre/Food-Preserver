@@ -16,6 +16,10 @@
         <activity android:name=".SearchActivity"
                   android:theme="@style/SearchActivityTheme"
             android:screenOrientation="portrait"/>
+        <activity android:name=".Equipment"
+            android:theme="@style/SearchActivityTheme"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".MenuActivity"
             android:screenOrientation="portrait"/>
         <activity

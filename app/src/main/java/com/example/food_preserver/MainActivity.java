@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         hamIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), SearchActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), Equipment.class);
                 startIntent.putExtra("com.example.test.SOMETHING2", "Hello world2");
                 startActivity(startIntent);
 
