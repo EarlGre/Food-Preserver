@@ -9,6 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MistakesFragment#newInstance} factory method to
@@ -25,7 +30,9 @@ public class MistakesFragment extends Fragment {
     Food foods;
     int vegetable, fruit, meat;
     */
-    TextView canningDetails;
+    TextView mistakesDetails;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DocumentReference FruitRef = db.document("Guide/Mistakes");
 
     // TODO: Rename and change types of parameters
     private String text;
@@ -60,58 +67,7 @@ public class MistakesFragment extends Fragment {
             text = getArguments().getString(ARG_TEXT);
             number = getArguments().getInt(ARG_NUMBER);
         }
-/*
-        try {
-            InputStream inputStream = getActivity().getAssets().open("vegetablesv1.xml");
-            XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = parserFactory.newPullParser();
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES,false);
-            parser.setInput(inputStream,null);
-            String tag = "" , text = "";
-            int event = parser.getEventType();
-            while (event!= XmlPullParser.END_DOCUMENT){
-                tag = parser.getName();
-                switch (event) {
-                    case XmlPullParser.START_TAG:
-                        if(tag.equals("Food"))
-                            foods = new Food();
-                        break;
-                    case XmlPullParser.TEXT:
-                        text=parser.getText();
-                        break;
-                    case XmlPullParser.END_TAG:
-                        switch (tag) {
-                            case "name": foods.setName(text);
-                                break;
-                            case "canningMethod": foods.setCanningMethod(text);
-                                break;
-                            case "type": foods.setType(text);
-                                if(text.equals("vegetable")) {
-                                    vegetable++;
-                                }
-                                if(text.equals("fruit")) {
-                                    fruit++;
-                                }
-                                if(text.equals("meat")) {
-                                    meat++;
-                                }
-                                break;
-                            case "Food":
-                                if(foods!=null)
-                                    foodList.add(foods);
-                                break;
-                        }
-                        break;
-                }
-                event = parser.next();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-        */
+
     }
 
     @Override
@@ -127,35 +83,31 @@ public class MistakesFragment extends Fragment {
 
 
         // text from description field is read into the fragment
-        canningDetails = v.findViewById(R.id.mistakes);
-        FoodItem details = getActivity().getIntent().getParcelableExtra("food");
+        mistakesDetails = v.findViewById(R.id.mistakes);
+
+
+
+        // get document reference and read it into the textView
+        FruitRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String title = (String) documentSnapshot.get("description");
+                            String replacement = title.replaceAll("\\\\n", "\n");
+                            mistakesDetails.setText(replacement);
+
+                        }
+                    }
+                });
+
+
+ //       FoodItem details = getActivity().getIntent().getParcelableExtra("food");
 //        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
  //       canningDetails.setText(replacement);
    //   canningDetails.setText(details.getCanningMethod());
 
 
-/*
-        Bundle bundle = getActivity().getIntent().getExtras();
-
-        String name = bundle.getString("name");
-
-        int i = 0;
-        int value = 0;
-        while(i < foodList.size())
-        {
-            if(name.equals(foodList.get(i).getName())) {
-                value = i;
-            }
-            i++;
-        }
-
-       String canning = foodList.get(value).getCanningMethod();
-
-       canningDetails = v.findViewById(R.id.canning);
-
-       canningDetails.setText(canning);
-
- */
         return v;
     }
 }
