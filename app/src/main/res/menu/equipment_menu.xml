@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/equipment"
+        android:icon="@drawable/bell_or_sweet_peppers"
+        android:title="Equipment" />
+    <item
+        android:id="@+id/setup"
+        android:icon="@drawable/apricots"
+        android:title="Setup" />
+    <item
+        android:id="@+id/mistakes"
+        android:icon="@drawable/green_tomatoes"
+        android:title="Common Mistakes" />
+</menu>

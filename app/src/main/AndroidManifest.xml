@@ -16,7 +16,6 @@
         <activity android:name=".SearchActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".Equipment"
-            android:theme="@style/SearchActivityTheme"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".MenuActivity"
