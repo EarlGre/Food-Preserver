@@ -20,7 +20,8 @@
             <ImageView
                 android:id="@+id/Setup_Image_1"
                 android:layout_width="match_parent"
-                android:layout_height="111dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView

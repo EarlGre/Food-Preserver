@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +33,7 @@ public class EquipmentFragment extends Fragment {
     int vegetable, fruit, meat;
     */
     TextView equipmentDetails;
+    ImageView equipmentImage;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference FruitRef = db.document("Guide/Equipment");
 
@@ -84,8 +87,9 @@ public class EquipmentFragment extends Fragment {
 
         // text from description field is read into the fragment
         equipmentDetails = v.findViewById(R.id.equipment);
+        equipmentImage = v.findViewById(R.id.Equipment_Image_1);
 
-        // get document reference and read it into the textView
+        // get document reference and read it into the textView & imageView
         FruitRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -95,6 +99,8 @@ public class EquipmentFragment extends Fragment {
                             String replacement = title.replaceAll("\\\\n", "\n");
                             equipmentDetails.setText(replacement);
 
+                            String picture = (String) documentSnapshot.get("picture");
+                            Picasso.get().load(picture).into(equipmentImage);
                         }
                     }
                 });
