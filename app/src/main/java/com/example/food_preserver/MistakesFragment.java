@@ -113,7 +113,11 @@ public class MistakesFragment extends Fragment {
 //        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
  //       canningDetails.setText(replacement);
    //   canningDetails.setText(details.getCanningMethod());
-
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
 
         return v;
     }

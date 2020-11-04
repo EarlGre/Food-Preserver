@@ -27,6 +27,8 @@ public class EquipmentFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_TEXT = "argText";
     private static final String ARG_NUMBER = "argNumber";
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final DocumentReference FruitRef = db.document("Guide/Equipment");
     /*
     ArrayList<Food> foodList = new ArrayList<>();
     Food foods;
@@ -34,9 +36,6 @@ public class EquipmentFragment extends Fragment {
     */
     TextView equipmentDetails;
     ImageView equipmentImage;
-    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final DocumentReference FruitRef = db.document("Guide/Equipment");
-
     // TODO: Rename and change types of parameters
     private String text;
     private int number;
@@ -110,6 +109,11 @@ public class EquipmentFragment extends Fragment {
 //        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
 //        canningDetails.setText(replacement);
         //   canningDetails.setText(details.getCanningMethod());
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
 
         return v;
     }
