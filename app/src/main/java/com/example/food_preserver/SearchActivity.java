@@ -41,7 +41,6 @@ public class SearchActivity extends AppCompatActivity {
 
         //request for get intent when search button is tapped
         if (getIntent().hasExtra("com.example.test.SOMETHING")) {
-            TextView tv = findViewById(R.id.textView);
             String text = getIntent().getExtras().getString("com.example.test.SOMETHING");
         }
 

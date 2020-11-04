@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/equipment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/equipment"
     app:startDestination="@id/equipment">
 
     <fragment
         android:id="@+id/mistakes"
         android:name="com.example.food_preserver.MistakesFragment"
-        android:label="MistakesFragment" />
+        android:label="fragment_mistakes"
+        tools:layout="@layout/fragment_mistakes" />
     <fragment
         android:id="@+id/equipment"
         android:name="com.example.food_preserver.EquipmentFragment"
-        android:label="EquipmentFragment" >
+        android:label="fragment_equipment"
+        tools:layout="@layout/fragment_equipment">
         <action
             android:id="@+id/action_equipmentFragment_to_setupFragment"
             app:destination="@id/setup" />
@@ -18,7 +22,8 @@
     <fragment
         android:id="@+id/setup"
         android:name="com.example.food_preserver.SetupFragment"
-        android:label="SetupFragment" >
+        android:label="fragment_setup"
+        tools:layout="@layout/fragment_setup">
         <action
             android:id="@+id/action_setupFragment_to_mistakesFragment"
             app:destination="@id/mistakes" />
