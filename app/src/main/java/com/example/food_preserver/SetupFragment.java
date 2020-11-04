@@ -110,6 +110,9 @@ public class SetupFragment extends Fragment {
 //        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
 //        canningDetails.setText(replacement);
    //   canningDetails.setText(details.getCanningMethod());
+
+
+        //have a slight delay so that the green android man doesn't show up
         try {
             Thread.sleep(200);
         } catch (InterruptedException ex) {
