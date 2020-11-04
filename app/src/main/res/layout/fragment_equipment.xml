@@ -26,8 +26,10 @@
             android:id="@+id/Equipment_Image_1"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:background="#00FFFFFF"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            tools:src="@drawable/empty" />
 
         <TextView
         android:id="@+id/equipment"

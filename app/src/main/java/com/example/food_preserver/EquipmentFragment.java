@@ -34,8 +34,8 @@ public class EquipmentFragment extends Fragment {
     */
     TextView equipmentDetails;
     ImageView equipmentImage;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private DocumentReference FruitRef = db.document("Guide/Equipment");
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final DocumentReference FruitRef = db.document("Guide/Equipment");
 
     // TODO: Rename and change types of parameters
     private String text;
@@ -49,7 +49,7 @@ public class EquipmentFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param text Parameter 1.
+     * @param text   Parameter 1.
      * @param number Parameter 2.
      * @return A new instance of fragment canningFragment.
      */
@@ -109,7 +109,7 @@ public class EquipmentFragment extends Fragment {
 //        FoodItem details = getActivity().getIntent().getParcelableExtra("food");
 //        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
 //        canningDetails.setText(replacement);
-   //   canningDetails.setText(details.getCanningMethod());
+        //   canningDetails.setText(details.getCanningMethod());
 
         return v;
     }
