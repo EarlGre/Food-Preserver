@@ -4,8 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/alt_bkgdmenu"
-    tools:context=".Equipment">
+    tools:context=".Help">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="411dp"
+        android:layout_height="709dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/alt_bkgdmenu" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -33,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/equipment_nav"
         app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/equipment" />
+        app:navGraph="@navigation/help" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

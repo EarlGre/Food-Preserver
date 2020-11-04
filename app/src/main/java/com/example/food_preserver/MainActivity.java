@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         hamIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), Equipment.class);
+                Intent startIntent = new Intent(getApplicationContext(), Help.class);
                 startIntent.putExtra("com.example.test.SOMETHING2", "Hello world2");
                 startActivity(startIntent);
 

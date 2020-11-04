@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FoodItemInstructions"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".SearchActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Equipment"
+        <activity android:name=".Help"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".MenuActivity"

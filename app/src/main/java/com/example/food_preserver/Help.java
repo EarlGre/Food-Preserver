@@ -9,12 +9,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Equipment extends AppCompatActivity {
+public class Help extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.equipment);
+        setContentView(R.layout.help);
         //request for get intent when search button is tapped
         if (getIntent().hasExtra("com.example.test.SOMETHING2")) {
             TextView tv = findViewById(R.id.textView2);
