@@ -18,7 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="380dp"
-            android:layout_height="385dp"
+            android:layout_height="335dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView1"
             app:layout_constraintTop_toBottomOf="@+id/textView1">
 
@@ -58,7 +58,7 @@
                 android:layout_width="376dp"
                 android:layout_height="63dp"
                 android:layout_marginEnd="4dp"
-                android:background="#8A8080"
+                android:background="#4CAF50"
                 android:fontFamily="cursive"
                 android:gravity="center"
                 android:text="Title"
@@ -71,17 +71,16 @@
 
             <TextView
                 android:id="@+id/text_view_priority"
-                android:layout_width="wrap_content"
+                android:layout_width="51dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginBottom="4dp"
                 android:text="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintBottom_toTopOf="parent"
+                tools:layout_editor_absoluteX="174dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
