@@ -3,14 +3,14 @@
 
     <item
         android:id="@+id/equipment"
-        android:icon="@drawable/bell_or_sweet_peppers"
+        android:icon="@drawable/ic_equipment"
         android:title="Equipment" />
     <item
         android:id="@+id/setup"
-        android:icon="@drawable/apricots"
+        android:icon="@drawable/ic_setup"
         android:title="Setup" />
     <item
         android:id="@+id/mistakes"
-        android:icon="@drawable/green_tomatoes"
-        android:title="Common Mistakes" />
+        android:icon="@drawable/ic_mistakes"
+        android:title="Mistakes" />
 </menu>
