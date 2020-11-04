@@ -14,8 +14,10 @@
         <activity android:name=".FoodItemInstructions"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".SearchActivity"
-                  android:theme="@style/SearchActivityTheme"
             android:screenOrientation="portrait"/>
+        <activity android:name=".Equipment"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".MenuActivity"
             android:screenOrientation="portrait"/>
         <activity

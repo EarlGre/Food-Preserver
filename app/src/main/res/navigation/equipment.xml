@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/equipment"
+    app:startDestination="@id/equipment">
+
+    <fragment
+        android:id="@+id/mistakes"
+        android:name="com.example.food_preserver.MistakesFragment"
+        android:label="MistakesFragment" />
+    <fragment
+        android:id="@+id/equipment"
+        android:name="com.example.food_preserver.EquipmentFragment"
+        android:label="EquipmentFragment" >
+        <action
+            android:id="@+id/action_equipmentFragment_to_setupFragment"
+            app:destination="@id/setup" />
+    </fragment>
+    <fragment
+        android:id="@+id/setup"
+        android:name="com.example.food_preserver.SetupFragment"
+        android:label="SetupFragment" >
+        <action
+            android:id="@+id/action_setupFragment_to_mistakesFragment"
+            app:destination="@id/mistakes" />
+    </fragment>
+</navigation>
