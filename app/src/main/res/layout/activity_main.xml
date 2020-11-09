@@ -1,74 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/alt_bkgdmenu"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:backgroundTint="#8A8A8A">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14"
-        app:menu="@menu/bottom_menu" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="398dp"
-        android:layout_height="507dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView"
-        app:navGraph="@navigation/my_nav" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/LogoTextMenu"
-        android:layout_width="155dp"
-        android:layout_height="60dp"
-        android:fontFamily="@font/princess_sofia"
-        android:text="@string/preserve_it"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsibleappbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            app:layout_scrollInterpolator="@android:anim/decelerate_interpolator">
 
-    <ImageView
-        android:id="@+id/SearchIcon"
-        android:layout_width="54dp"
-        android:layout_height="51dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@+id/LogoTextMenu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272"
-        app:srcCompat="@drawable/ic_search_black_24dp"
-        app:tint="#FFFFFF"
-        android:contentDescription="@string/todo" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/LogoMenu"
-        android:layout_width="58dp"
-        android:layout_height="74dp"
-        app:layout_constraintEnd_toStartOf="@+id/LogoTextMenu"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/jesses_coin_jar"
-        android:contentDescription="@string/todo" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="413dp"
+                    android:layout_height="74dp"
+                    android:background="#4CAF50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/LogoMenu"
+                    android:layout_width="58dp"
+                    android:layout_height="74dp"
+                    android:contentDescription="@string/todo"
+                    app:layout_constraintEnd_toStartOf="@+id/LogoTextMenu"
+                    app:layout_constraintHorizontal_bias="0.195"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/jesses_coin_jar"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/LogoTextMenu"
+                    android:layout_width="155dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="140dp"
+                    android:fontFamily="@font/princess_sofia"
+                    android:text="@string/preserve_it"
+                    android:textColor="#FFFFFF"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/view" />
+
+                <ImageView
+                    android:id="@+id/SearchIcon"
+                    android:layout_width="54dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/todo"
+                    app:layout_constraintEnd_toEndOf="@+id/view"
+                    app:layout_constraintHorizontal_bias="0.73"
+                    app:layout_constraintStart_toEndOf="@+id/LogoTextMenu"
+                    app:layout_constraintTop_toTopOf="@+id/view"
+                    app:srcCompat="@drawable/ic_search_black_24dp"
+                    app:tint="#FFFFFF" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="669dp"
+
+
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="409dp"
+                android:layout_height="62dp"
+                app:layout_constraintBottom_toTopOf="@+id/fragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/bottom_menu">
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="412dp"
+                android:layout_height="526dp"
+                android:backgroundTint="#AFADAD"
+                app:defaultNavHost="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView"
+                app:layout_constraintVertical_bias="0.0"
+                app:navGraph="@navigation/my_nav" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,10 +14,9 @@ public class Help extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.help);
+        setContentView(R.layout.activity_help);
         //request for get intent when search button is tapped
         if (getIntent().hasExtra("com.example.test.SOMETHING2")) {
-            TextView tv = findViewById(R.id.textView2);
             String text = getIntent().getExtras().getString("com.example.test.SOMETHING2");
         }
 
