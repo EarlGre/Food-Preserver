@@ -32,14 +32,20 @@
             android:text="@string/large_text"
             android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/Equipment_Image1"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="#00FFFFFF"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"
-            tools:src="@mipmap/ic_launcher" />
+            android:layout_height="match_parent"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/Equipment_Image1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                tools:src="@mipmap/ic_launcher" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/Equipment_Paragraph2"
@@ -51,14 +57,20 @@
             android:text="@string/large_text"
             android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/Equipment_Image2"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="#00FFFFFF"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"
-            tools:src="@mipmap/ic_launcher" />
+            android:layout_height="match_parent"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/Equipment_Image2"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                tools:src="@mipmap/ic_launcher" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/Equipment_Paragraph3"
@@ -70,14 +82,20 @@
             android:text="@string/large_text"
             android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/Equipment_Image3"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="#00FFFFFF"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"
-            tools:src="@mipmap/ic_launcher" />
+            android:layout_height="match_parent"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/Equipment_Image3"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                tools:src="@mipmap/ic_launcher" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/Equipment_Paragraph4"
