@@ -22,24 +22,73 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-        <ImageView
-            android:id="@+id/Equipment_Image_1"
+        <TextView
+            android:id="@+id/Equipment_Paragraph1"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:fontFamily="sans-serif-black"
+            android:lineSpacingExtra="10sp"
+            android:text="@string/large_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/Equipment_Image1"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
             android:background="#00FFFFFF"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"
             tools:src="@mipmap/ic_launcher" />
 
         <TextView
-        android:id="@+id/equipment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:editable="false"
-        android:fontFamily="sans-serif-black"
-        android:lineSpacingExtra="10sp"
-        android:text="@string/large_text"
-        android:textSize="14sp" />
+            android:id="@+id/Equipment_Paragraph2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:fontFamily="sans-serif-black"
+            android:lineSpacingExtra="10sp"
+            android:text="@string/large_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/Equipment_Image2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/Equipment_Paragraph3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:fontFamily="sans-serif-black"
+            android:lineSpacingExtra="10sp"
+            android:text="@string/large_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/Equipment_Image3"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/Equipment_Paragraph4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:fontFamily="sans-serif-black"
+            android:lineSpacingExtra="10sp"
+            android:text="@string/large_text"
+            android:textSize="14sp" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
 
