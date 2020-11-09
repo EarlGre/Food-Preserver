@@ -1,174 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:backgroundTint="#00FFFFFF"
-    tools:context=".FoodItemInstructions">
+    android:layout_height="wrap_content">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="411dp"
-        android:layout_height="709dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/alt_bkgdmenu" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/methods"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/methods_menu" />
+        android:layout_height="match_parent">
 
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:defaultNavHost="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/methods"
-        app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/preserving_methods" />
-
-    <LinearLayout
-        android:id="@+id/food_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#4CAF50"
-        android:backgroundTint="#4CAF50"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/methods"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/food_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/food_name"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/food_image"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:contentDescription="@string/todo"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@mipmap/ic_launcher" />
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
+
+            app:toolbarId="@+id/toolbar">
+
+            <ImageView
+                android:id="@+id/food_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/sym_def_app_icon" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/food_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="food_name"
+                    android:textSize="24sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageButton
+                android:id="@+id/favouriteButtonBorder2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/todo"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:tint="#FFFFFF"
+                app:srcCompat="@drawable/ic_star_black_24dp" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:backgroundTint="#00FFFFFF"
+                android:clipChildren="false"
+                android:clipToPadding="true"
+                android:foregroundTint="#00FFFFFF"
+                android:soundEffectsEnabled="true"
+                app:shimmer_auto_start="false"
+                app:shimmer_base_alpha="1"
+                app:shimmer_base_color="#FFFFFF"
+                app:shimmer_clip_to_children="true"
+                app:shimmer_duration="2000"
+                app:shimmer_fixed_width="100dp"
+                app:shimmer_highlight_alpha="0.2"
+                app:shimmer_highlight_color="#FFFFFF"
+                app:shimmer_intensity="0.15"
+                app:shimmer_repeat_delay="0"
+                app:shimmer_repeat_mode="restart"
+                app:shimmer_shape="linear">
+
+                <ImageButton
+                    android:id="@+id/favouriteButtonBorder"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/todo"
+                    android:padding="0dp"
+                    android:scaleType="fitXY"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
+                    android:tint="#000000"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.04000002"
+                    app:srcCompat="@drawable/ic_star_black_24dp" />
+
+                <ImageButton
+                    android:id="@+id/favouriteButton"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/todo"
+                    android:padding="10dp"
+                    android:scaleType="fitXY"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:tint="@android:color/darker_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.04000002"
+                    app:srcCompat="@drawable/ic_star_black_24dp" />
 
 
-    </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageButton
-        android:id="@+id/favouriteButtonBorder2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/todo"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:tint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002"
-        app:srcCompat="@drawable/ic_star_black_24dp" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_view_container"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:backgroundTint="#00FFFFFF"
-        android:clipChildren="false"
-        android:clipToPadding="true"
-        android:foregroundTint="#00FFFFFF"
-        android:soundEffectsEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002"
-        app:shimmer_auto_start="false"
-        app:shimmer_base_alpha="1"
-        app:shimmer_base_color="#FFFFFF"
-        app:shimmer_clip_to_children="true"
-        app:shimmer_duration="2000"
-        app:shimmer_fixed_width="100dp"
-        app:shimmer_highlight_alpha="0.2"
-        app:shimmer_highlight_color="#FFFFFF"
-        app:shimmer_intensity="0.15"
-        app:shimmer_repeat_delay="0"
-        app:shimmer_repeat_mode="restart"
-        app:shimmer_shape="linear">
-
-        <ImageButton
-            android:id="@+id/favouriteButtonBorder"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/todo"
-            android:padding="0dp"
-            android:scaleType="fitXY"
-            android:scaleX="1.2"
-            android:scaleY="1.2"
-            android:tint="#000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.04000002"
-            app:srcCompat="@drawable/ic_star_black_24dp" />
-
-        <ImageButton
-            android:id="@+id/favouriteButton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/todo"
-            android:padding="10dp"
-            android:scaleType="fitXY"
-            android:scaleX="1.3"
-            android:scaleY="1.3"
-            android:tint="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.04000002"
-            app:srcCompat="@drawable/ic_star_black_24dp" />
 
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/methods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="600dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/methods_menu">
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:defaultNavHost="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/methods"
+                app:navGraph="@navigation/preserving_methods" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
