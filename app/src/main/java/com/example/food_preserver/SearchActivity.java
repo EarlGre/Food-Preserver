@@ -56,8 +56,8 @@ public class SearchActivity extends AppCompatActivity {
                 FoodItem food = documentSnapshot.toObject(FoodItem.class);
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath();
-                Toast.makeText(getApplicationContext(),
-                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),
+//                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
 
                 // Code for implementing new activity using the document ID
                 Bundle bundle = new Bundle();
@@ -78,7 +78,6 @@ public class SearchActivity extends AppCompatActivity {
 
                 // override the transition for each activity
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
             }
         });
 

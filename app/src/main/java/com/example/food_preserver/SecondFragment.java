@@ -103,8 +103,8 @@ public class SecondFragment extends Fragment {
                 FoodItem food = documentSnapshot.toObject(FoodItem.class);
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath();
-                Toast.makeText(getActivity(),
-                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),
+//                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
 
 
                 // Code for implementing new activity using the document ID
@@ -126,7 +126,6 @@ public class SecondFragment extends Fragment {
 
                 // override the transition for each activity
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
             }
         });
 

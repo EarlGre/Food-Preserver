@@ -105,8 +105,8 @@ public class FirstFragment extends Fragment {
                 FoodItem food = documentSnapshot.toObject(FoodItem.class);
                 String id = documentSnapshot.getId();
                 String path = documentSnapshot.getReference().getPath();
-                Toast.makeText(getActivity(),
-                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),
+//                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
 
                 // Code for implementing new activity using the document ID
                 Bundle bundle = new Bundle();
