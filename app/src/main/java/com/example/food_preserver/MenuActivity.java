@@ -1,9 +1,9 @@
 package com.example.food_preserver;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
     Button settings;
@@ -20,8 +20,5 @@ public class MenuActivity extends AppCompatActivity {
         profile = findViewById(R.id.profile);
         about = findViewById(R.id.about);
         help = findViewById(R.id.help);
-
     }
-
-
 }

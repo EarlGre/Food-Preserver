@@ -2,16 +2,16 @@ package com.example.food_preserver;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Handler;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
@@ -32,19 +32,16 @@ public class SecondFragment extends Fragment {
     //  int imageURI;
     //  Activity act;
 
-    RecyclerView recyclerView;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference FruitRef = db.collection("Vegetables");
-    private FoodAdapter adapter;
-    private Parcelable mListState;
-    private Bundle mBundleRecyclerViewState;
-
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    RecyclerView recyclerView;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference FruitRef = db.collection("Vegetables");
+    private FoodAdapter adapter;
+    private Parcelable mListState;
+    private Bundle mBundleRecyclerViewState;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -134,69 +131,6 @@ public class SecondFragment extends Fragment {
         });
 
         return view;
-
-
-        /*
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_second, container, false);
-
-        act = getActivity();
-
-        try {
-            InputStream inputStream = getActivity().getAssets().open("veg.xml");
-            XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = parserFactory.newPullParser();
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES,false);
-            parser.setInput(inputStream,null);
-            String tag = "" , text = "";
-            int event = parser.getEventType();
-            while (event!= XmlPullParser.END_DOCUMENT){
-                tag = parser.getName();
-                switch (event) {
-                    case XmlPullParser.START_TAG:
-                        if(tag.equals("Food"))
-                            foods = new Food();
-                        break;
-                    case XmlPullParser.TEXT:
-                        text=parser.getText();
-                        break;
-                    case XmlPullParser.END_TAG:
-                        switch (tag) {
-                            case "name": foods.setName(text);
-                                break;
-                            case "image": foods.setImageURL(text);
-                                imageURI = act.getResources().getIdentifier(text, "drawable", act.getPackageName());
-                                foods.setImage(imageURI);
-                                break;
-                            case "type": foods.setType(text);
-                                break;
-                            case "Food":
-                                if(foods!=null)
-                                    foodList.add(foods);
-                                break;
-                        }
-                        break;
-                }
-                event = parser.next();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-
-        //recyclerview implementation in fragment
-        recyclerView = view.findViewById(R.id.recyclerView_SecondFragment);
-
-        MyAdapter myAdapter = new MyAdapter(getContext(), foodList);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-        return view;
-
-         */
     }
 
     @Override
@@ -231,7 +165,4 @@ public class SecondFragment extends Fragment {
         }, 50);
         // recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
-
-
-
 }

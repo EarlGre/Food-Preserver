@@ -34,8 +34,8 @@ public class SetupFragment extends Fragment {
     */
     TextView setupDetails;
     ImageView setupImage;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private DocumentReference FruitRef = db.document("Guide/Setup");
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final DocumentReference FruitRef = db.document("Guide/Setup");
 
     // TODO: Rename and change types of parameters
     private String text;
@@ -49,7 +49,7 @@ public class SetupFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param text Parameter 1.
+     * @param text   Parameter 1.
      * @param number Parameter 2.
      * @return A new instance of fragment canningFragment.
      */
@@ -84,7 +84,6 @@ public class SetupFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_setup, container, false);
 
-
         // text from description field is read into the fragment
         setupDetails = v.findViewById(R.id.setup);
         setupImage = v.findViewById(R.id.Setup_Image_1);
@@ -105,12 +104,6 @@ public class SetupFragment extends Fragment {
                         }
                     }
                 });
-
- //       FoodItem details = getActivity().getIntent().getParcelableExtra("food");
-//        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
-//        canningDetails.setText(replacement);
-   //   canningDetails.setText(details.getCanningMethod());
-
 
         //have a slight delay so that the green android man doesn't show up
         try {

@@ -74,7 +74,6 @@ public class EquipmentFragment extends Fragment {
             text = getArguments().getString(ARG_TEXT);
             number = getArguments().getInt(ARG_NUMBER);
         }
-
     }
 
     @Override
@@ -87,7 +86,6 @@ public class EquipmentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_equipment, container, false);
-
 
         // text from description field is read into the fragment
         equipmentParagraph1 = v.findViewById(R.id.Equipment_Paragraph1);
@@ -127,13 +125,6 @@ public class EquipmentFragment extends Fragment {
                         }
                     }
                 });
-
-
-//        FoodItem details = getActivity().getIntent().getParcelableExtra("food");
-//        String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
-//        canningDetails.setText(replacement);
-        //   canningDetails.setText(details.getCanningMethod());
-
 
         //have a slight delay so that the green android man doesn't show up
         try {

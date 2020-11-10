@@ -1,13 +1,12 @@
 package com.example.food_preserver;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,59 +64,6 @@ public class dryingFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-/*
-        try {
-            InputStream inputStream = getActivity().getAssets().open("vegetablesv1.xml");
-            XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = parserFactory.newPullParser();
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES,false);
-            parser.setInput(inputStream,null);
-            String tag = "" , text = "";
-            int event = parser.getEventType();
-            while (event!= XmlPullParser.END_DOCUMENT){
-                tag = parser.getName();
-                switch (event) {
-                    case XmlPullParser.START_TAG:
-                        if(tag.equals("Food"))
-                            foods = new Food();
-                        break;
-                    case XmlPullParser.TEXT:
-                        text=parser.getText();
-                        break;
-                    case XmlPullParser.END_TAG:
-                        switch (tag) {
-                            case "name": foods.setName(text);
-                                break;
-                            case "dryingMethod": foods.setDryingMethod(text);
-                                break;
-                            case "type": foods.setType(text);
-                                if(text.equals("vegetable")) {
-                                    vegetable++;
-                                }
-                                if(text.equals("fruit")) {
-                                    fruit++;
-                                }
-                                if(text.equals("meat")) {
-                                    meat++;
-                                }
-                                break;
-                            case "Food":
-                                if(foods!=null)
-                                    foodList.add(foods);
-                                break;
-                        }
-                        break;
-                }
-                event = parser.next();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-
- */
     }
 
     @Override
@@ -130,34 +76,7 @@ public class dryingFragment extends Fragment {
         FoodItem details = getActivity().getIntent().getParcelableExtra("food");
         String replacement = details.getDryingMethod().replaceAll("\\\\n", "\n");
         dryingDetails.setText(replacement);
-     // dryingDetails.setText(details.getDryingMethod());
 
-
-
-/*
-        Bundle bundle = getActivity().getIntent().getExtras();
-
-        String name = bundle.getString("name");
-
-        int i = 0;
-        int value = 0;
-        while(i < foodList.size())
-        {
-            if(name.equals(foodList.get(i).getName())) {
-                value = i;
-            }
-            i++;
-        }
-
-        String drying = "";
-
-        drying = foodList.get(value).getDryingMethod();
-
-        dryingDetails = v.findViewById(R.id.drying);
-
-        dryingDetails.setText(drying);
-*/
         return v;
     }
-
 }

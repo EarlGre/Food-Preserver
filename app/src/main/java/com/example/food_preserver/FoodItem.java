@@ -4,6 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class FoodItem implements Parcelable {
+    public static final Creator<FoodItem> CREATOR = new Creator<FoodItem>() {
+        @Override
+        public FoodItem createFromParcel(Parcel in) {
+            return new FoodItem(in);
+        }
+
+        @Override
+        public FoodItem[] newArray(int size) {
+            return new FoodItem[size];
+        }
+    };
     private String title;
     private String canningMethod;
     private String dryingMethod;
@@ -11,7 +22,6 @@ public class FoodItem implements Parcelable {
     private int priority;
     private String picture;
     private String type;
-
 
     public FoodItem() {
         //empty constructor needed
@@ -36,18 +46,6 @@ public class FoodItem implements Parcelable {
         picture = in.readString();
     }
 
-    public static final Creator<FoodItem> CREATOR = new Creator<FoodItem>() {
-        @Override
-        public FoodItem createFromParcel(Parcel in) {
-            return new FoodItem(in);
-        }
-
-        @Override
-        public FoodItem[] newArray(int size) {
-            return new FoodItem[size];
-        }
-    };
-
     public String getTitle() {
         return title;
     }
@@ -68,7 +66,9 @@ public class FoodItem implements Parcelable {
         return priority;
     }
 
-    public String getPicture() { return picture; }
+    public String getPicture() {
+        return picture;
+    }
 
     @Override
     public int describeContents() {

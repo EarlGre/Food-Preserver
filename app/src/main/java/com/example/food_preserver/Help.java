@@ -1,7 +1,6 @@
 package com.example.food_preserver;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
@@ -23,10 +22,7 @@ public class Help extends AppCompatActivity {
         BottomNavigationView nav = findViewById(R.id.equipment_nav);
         NavHostFragment navHostFragment = (NavHostFragment) this.getSupportFragmentManager().findFragmentById(R.id.fragment_container_equipment);
         NavigationUI.setupWithNavController(nav, navHostFragment.getNavController());
-
-
     }
-
 
     // override the transition going back in an activity
     @Override
@@ -35,5 +31,4 @@ public class Help extends AppCompatActivity {
 
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-
 }
