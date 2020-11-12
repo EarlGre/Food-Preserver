@@ -5,14 +5,14 @@
 
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@android:color/background_light">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
 
         android:layout_width="match_parent"
-        android:layout_height="192dp">
+        android:layout_height="79dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="183dp"
-                    android:layout_height="92dp"
+                    android:layout_height="60dp"
                     android:fontFamily="@font/princess_sofia"
                     android:gravity="center"
                     android:text="@string/help"
@@ -40,6 +40,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.3"
                     tools:text="@string/help" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
