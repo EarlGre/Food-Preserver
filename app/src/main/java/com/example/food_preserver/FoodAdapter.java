@@ -1,26 +1,23 @@
 package com.example.food_preserver;
 
 
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
-import java.util.Arrays;
-
 public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.FoodHolder> {
     private OnItemClickListener listener;
+
     public FoodAdapter(@NonNull FirestoreRecyclerOptions<FoodItem> options) {
         super(options);
     }
@@ -31,11 +28,11 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
         holder.textViewPriority.setText(String.valueOf(model.getPriority()));
         if (model.getPicture().isEmpty()) {
             Picasso.get().load(R.mipmap.ic_launcher).into(holder.myImageView);
-        }
-        else {
+        } else {
             Picasso.get().load(model.getPicture()).into(holder.myImageView);
         }
     }
+
     @NonNull
     @Override
     public FoodHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,10 +41,21 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
         return new FoodHolder(v);
     }
 
+    // methods for on click listener for adapter
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    // methods for on click listener for adapter
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
     class FoodHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
         TextView textViewPriority;
         ImageView myImageView;
+
         public FoodHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
@@ -65,15 +73,5 @@ public class FoodAdapter extends FirestoreRecyclerAdapter<FoodItem, FoodAdapter.
                 }
             });
         }
-    }
-
-    // methods for on click listener for adapter
-    public interface OnItemClickListener {
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
-    }
-
-    // methods for on click listener for adapter
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
     }
 }

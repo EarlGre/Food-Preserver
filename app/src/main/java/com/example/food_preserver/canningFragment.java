@@ -1,14 +1,13 @@
 package com.example.food_preserver;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +39,7 @@ public class canningFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param text Parameter 1.
+     * @param text   Parameter 1.
      * @param number Parameter 2.
      * @return A new instance of fragment canningFragment.
      */
@@ -61,58 +60,6 @@ public class canningFragment extends Fragment {
             text = getArguments().getString(ARG_TEXT);
             number = getArguments().getInt(ARG_NUMBER);
         }
-/*
-        try {
-            InputStream inputStream = getActivity().getAssets().open("vegetablesv1.xml");
-            XmlPullParserFactory parserFactory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = parserFactory.newPullParser();
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES,false);
-            parser.setInput(inputStream,null);
-            String tag = "" , text = "";
-            int event = parser.getEventType();
-            while (event!= XmlPullParser.END_DOCUMENT){
-                tag = parser.getName();
-                switch (event) {
-                    case XmlPullParser.START_TAG:
-                        if(tag.equals("Food"))
-                            foods = new Food();
-                        break;
-                    case XmlPullParser.TEXT:
-                        text=parser.getText();
-                        break;
-                    case XmlPullParser.END_TAG:
-                        switch (tag) {
-                            case "name": foods.setName(text);
-                                break;
-                            case "canningMethod": foods.setCanningMethod(text);
-                                break;
-                            case "type": foods.setType(text);
-                                if(text.equals("vegetable")) {
-                                    vegetable++;
-                                }
-                                if(text.equals("fruit")) {
-                                    fruit++;
-                                }
-                                if(text.equals("meat")) {
-                                    meat++;
-                                }
-                                break;
-                            case "Food":
-                                if(foods!=null)
-                                    foodList.add(foods);
-                                break;
-                        }
-                        break;
-                }
-                event = parser.next();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-        */
     }
 
     @Override
@@ -132,31 +79,7 @@ public class canningFragment extends Fragment {
         FoodItem details = getActivity().getIntent().getParcelableExtra("food");
         String replacement = details.getCanningMethod().replaceAll("\\\\n", "\n");
         canningDetails.setText(replacement);
-   //   canningDetails.setText(details.getCanningMethod());
 
-
-/*
-        Bundle bundle = getActivity().getIntent().getExtras();
-
-        String name = bundle.getString("name");
-
-        int i = 0;
-        int value = 0;
-        while(i < foodList.size())
-        {
-            if(name.equals(foodList.get(i).getName())) {
-                value = i;
-            }
-            i++;
-        }
-
-       String canning = foodList.get(value).getCanningMethod();
-
-       canningDetails = v.findViewById(R.id.canning);
-
-       canningDetails.setText(canning);
-
- */
         return v;
     }
 }
