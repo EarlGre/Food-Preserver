@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_equipment"
         android:title="Equipment" />
     <item
-        android:id="@+id/setup"
+        android:id="@+id/Setup_Paragraph1"
         android:icon="@drawable/ic_setup"
         android:title="Setup" />
     <item
