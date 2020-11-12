@@ -93,11 +93,11 @@ public class MistakesFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String title = (String) documentSnapshot.get("description");
+                            String title = (String) documentSnapshot.get("paragraph1");
                             String replacement = title.replaceAll("\\\\n", "\n");
                             mistakesDetails.setText(replacement);
 
-                            String picture = (String) documentSnapshot.get("picture");
+                            String picture = (String) documentSnapshot.get("picture1");
                             Picasso.get().load(picture).into(mistakesImage);
 
                         }

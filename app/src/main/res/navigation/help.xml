@@ -17,10 +17,10 @@
         tools:layout="@layout/fragment_equipment">
         <action
             android:id="@+id/action_equipmentFragment_to_setupFragment"
-            app:destination="@id/setup" />
+            app:destination="@id/Setup_Paragraph1" />
     </fragment>
     <fragment
-        android:id="@+id/setup"
+        android:id="@+id/Setup_Paragraph1"
         android:name="com.example.food_preserver.SetupFragment"
         android:label="fragment_setup"
         tools:layout="@layout/fragment_setup">

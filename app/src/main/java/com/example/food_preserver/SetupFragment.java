@@ -32,10 +32,16 @@ public class SetupFragment extends Fragment {
     Food foods;
     int vegetable, fruit, meat;
     */
-    TextView setupDetails;
-    ImageView setupImage;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final DocumentReference FruitRef = db.document("Guide/Setup");
+
+    TextView setupParagraph1;
+    TextView setupParagraph2;
+    TextView setupParagraph3;
+    TextView setupParagraph4;
+    ImageView setupImage1;
+    ImageView setupImage2;
+    ImageView setupImage3;
 
     // TODO: Rename and change types of parameters
     private String text;
@@ -85,8 +91,13 @@ public class SetupFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_setup, container, false);
 
         // text from description field is read into the fragment
-        setupDetails = v.findViewById(R.id.setup);
-        setupImage = v.findViewById(R.id.Setup_Image_1);
+        setupParagraph1 = v.findViewById(R.id.Setup_Paragraph1);
+        setupParagraph2 = v.findViewById(R.id.Setup_Paragraph2);
+        setupParagraph3 = v.findViewById(R.id.Setup_Paragraph3);
+        setupParagraph4 = v.findViewById(R.id.Setup_Paragraph4);
+        setupImage1 = v.findViewById(R.id.Setup_Image1);
+        setupImage2 = v.findViewById(R.id.Setup_Image2);
+        setupImage3 = v.findViewById(R.id.Setup_Image3);
 
         // get document reference and read it into the textView
         FruitRef.get()
@@ -94,12 +105,26 @@ public class SetupFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String title = (String) documentSnapshot.get("description");
-                            String replacement = title.replaceAll("\\\\n", "\n");
-                            setupDetails.setText(replacement);
+                            String paragraph1 = (String) documentSnapshot.get("paragraph1");
+                            String paragraph2 = (String) documentSnapshot.get("paragraph2");
+                            String paragraph3 = (String) documentSnapshot.get("paragraph3");
+                            String paragraph4 = (String) documentSnapshot.get("paragraph4");
+                            String replacement1 = paragraph1.replaceAll("\\\\n", "\n");
+                            String replacement2 = paragraph2.replaceAll("\\\\n", "\n");
+                            String replacement3 = paragraph3.replaceAll("\\\\n", "\n");
+                            String replacement4 = paragraph4.replaceAll("\\\\n", "\n");
 
-                            String picture = (String) documentSnapshot.get("picture");
-                            Picasso.get().load(picture).into(setupImage);
+                            setupParagraph1.setText(replacement1);
+                            setupParagraph2.setText(replacement2);
+                            setupParagraph3.setText(replacement3);
+                            setupParagraph4.setText(replacement4);
+
+                            String picture1 = (String) documentSnapshot.get("picture1");
+                            String picture2 = (String) documentSnapshot.get("picture2");
+                            String picture3 = (String) documentSnapshot.get("picture3");
+                            Picasso.get().load(picture1).into(setupImage1);
+                            Picasso.get().load(picture2).into(setupImage2);
+                            Picasso.get().load(picture3).into(setupImage3);
 
                         }
                     }
