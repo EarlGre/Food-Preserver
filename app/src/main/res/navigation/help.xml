@@ -6,7 +6,7 @@
     app:startDestination="@id/Equipment_Paragraph1">
 
     <fragment
-        android:id="@+id/mistakes"
+        android:id="@+id/Mistakes_Paragraph1"
         android:name="com.example.food_preserver.MistakesFragment"
         android:label="fragment_mistakes"
         tools:layout="@layout/fragment_mistakes" />
@@ -26,6 +26,6 @@
         tools:layout="@layout/fragment_setup">
         <action
             android:id="@+id/action_setupFragment_to_mistakesFragment"
-            app:destination="@id/mistakes" />
+            app:destination="@id/Mistakes_Paragraph1" />
     </fragment>
 </navigation>
