@@ -34,6 +34,7 @@
                     android:fontFamily="@font/princess_sofia"
                     android:gravity="center"
                     android:text="@string/help"
+                    android:textColor="#FFFFFF"
                     android:textSize="36sp"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toBottomOf="parent"

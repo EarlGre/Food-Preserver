@@ -27,6 +27,7 @@
         android:drawableStart="@android:drawable/ic_menu_search"
         android:hint="Search"
         android:inputType="textAutoComplete"
+        android:textColor="#FBFAFA"
         app:layout_constraintBottom_toTopOf="@+id/recycler_search"
         app:layout_constraintEnd_toStartOf="@+id/recycler_search"
         app:layout_constraintHorizontal_bias="0.484"
