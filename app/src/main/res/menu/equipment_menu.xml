@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_setup"
         android:title="Setup" />
     <item
-        android:id="@+id/mistakes"
+        android:id="@+id/Mistakes_Paragraph1"
         android:icon="@drawable/ic_mistakes"
         android:title="Mistakes" />
 </menu>

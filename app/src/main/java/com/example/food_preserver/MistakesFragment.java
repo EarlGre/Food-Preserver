@@ -37,6 +37,15 @@ public class MistakesFragment extends Fragment {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final DocumentReference FruitRef = db.document("Guide/Mistakes");
 
+    TextView mistakesParagraph1;
+    TextView mistakesParagraph2;
+    TextView mistakesParagraph3;
+    ImageView mistakesImage1;
+    ImageView mistakesImage2;
+    ImageView mistakesImage3;
+
+
+
     // TODO: Rename and change types of parameters
     private String text;
     private int number;
@@ -84,8 +93,12 @@ public class MistakesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_mistakes, container, false);
 
         // text from description field is read into the fragment
-        mistakesDetails = v.findViewById(R.id.mistakes);
-        mistakesImage = v.findViewById(R.id.Mistakes_Image_1);
+        mistakesParagraph1 = v.findViewById(R.id.Mistakes_Paragraph1);
+        mistakesParagraph2 = v.findViewById(R.id.Mistakes_Paragraph2);
+        mistakesParagraph3 = v.findViewById(R.id.Mistakes_Paragraph3);
+        mistakesImage1 = v.findViewById(R.id.Mistakes_Image1);
+        mistakesImage2 = v.findViewById(R.id.Mistakes_Image2);
+        mistakesImage3 = v.findViewById(R.id.Mistakes_Image3);
 
         // get document reference and read it into the textView
         FruitRef.get()
@@ -93,12 +106,23 @@ public class MistakesFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String title = (String) documentSnapshot.get("paragraph1");
-                            String replacement = title.replaceAll("\\\\n", "\n");
-                            mistakesDetails.setText(replacement);
+                            String paragraph1 = (String) documentSnapshot.get("paragraph1");
+                            String paragraph2 = (String) documentSnapshot.get("paragraph2");
+                            String paragraph3 = (String) documentSnapshot.get("paragraph3");
+                            String replacement1 = paragraph1.replaceAll("\\\\n", "\n");
+                            String replacement2 = paragraph2.replaceAll("\\\\n", "\n");
+                            String replacement3 = paragraph3.replaceAll("\\\\n", "\n");
 
-                            String picture = (String) documentSnapshot.get("picture1");
-                            Picasso.get().load(picture).into(mistakesImage);
+                            mistakesParagraph1.setText(replacement1);
+                            mistakesParagraph2.setText(replacement2);
+                            mistakesParagraph3.setText(replacement3);
+
+                            String picture1 = (String) documentSnapshot.get("picture1");
+                            String picture2 = (String) documentSnapshot.get("picture2");
+                            String picture3 = (String) documentSnapshot.get("picture3");
+                            Picasso.get().load(picture1).into(mistakesImage1);
+                            Picasso.get().load(picture2).into(mistakesImage2);
+                            Picasso.get().load(picture3).into(mistakesImage3);
 
                         }
                     }
