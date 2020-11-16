@@ -9,7 +9,11 @@
         android:id="@+id/Mistakes_Paragraph1"
         android:name="com.example.food_preserver.MistakesFragment"
         android:label="fragment_mistakes"
-        tools:layout="@layout/fragment_mistakes" />
+        tools:layout="@layout/fragment_mistakes" >
+        <action
+            android:id="@+id/action_Mistakes_Paragraph1_to_referencesFragment"
+            app:destination="@id/References_Paragraph" />
+    </fragment>
     <fragment
         android:id="@+id/Equipment_Paragraph1"
         android:name="com.example.food_preserver.EquipmentFragment"
@@ -28,4 +32,9 @@
             android:id="@+id/action_setupFragment_to_mistakesFragment"
             app:destination="@id/Mistakes_Paragraph1" />
     </fragment>
+    <fragment
+        android:id="@+id/References_Paragraph"
+        android:name="com.example.food_preserver.ReferencesFragment"
+        android:label="fragment_references"
+        tools:layout="@layout/fragment_references" />
 </navigation>
