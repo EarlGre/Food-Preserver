@@ -13,4 +13,7 @@
         android:id="@+id/Mistakes_Paragraph1"
         android:icon="@drawable/ic_mistakes"
         android:title="Mistakes" />
+    <item
+        android:icon="@drawable/references_icon"
+        android:title="References" />
 </menu>
