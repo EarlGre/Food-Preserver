@@ -24,6 +24,7 @@ public class FoodItemInstructions extends AppCompatActivity {
     ImageButton favouriteButton;
     ArrayList<String> favourites = new ArrayList<>();
     boolean isFavourited = false;
+    boolean isCannedImage = false;
 
     /*
         String foodName;
@@ -94,6 +95,19 @@ public class FoodItemInstructions extends AppCompatActivity {
             }
             //save all changes to arraylist of favourited items
             tinydb.putListString("allFavourites", favourites);
+        });
+
+        //swap the image to the canned variant
+        foodImage.setOnClickListener(v -> {
+            if(foodPicture.getCanPicture() != null) {
+                if (!isCannedImage) {
+                    Picasso.get().load(foodPicture.getCanPicture()).into(foodImage);
+                    isCannedImage = true;
+                } else {
+                    Picasso.get().load(foodPicture.getPicture()).into(foodImage);
+                    isCannedImage = false;
+                }
+            }
         });
     }
 
