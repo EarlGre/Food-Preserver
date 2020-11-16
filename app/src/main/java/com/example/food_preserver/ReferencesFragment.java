@@ -29,18 +29,8 @@ public class ReferencesFragment extends Fragment {
     private static final String ARG_NUMBER = "argNumber";
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final DocumentReference FruitRef = db.document("Guide/References");
-    /*
-    ArrayList<Food> foodList = new ArrayList<>();
-    Food foods;
-    int vegetable, fruit, meat;
-    */
-//    TextView equipmentParagraph1;
-//    TextView equipmentParagraph2;
-//    TextView equipmentParagraph3;
-//    TextView equipmentParagraph4;
-//    ImageView equipmentImage1;
-//    ImageView equipmentImage2;
-//    ImageView equipmentImage3;
+    TextView referencesParagraph1;
+
     // TODO: Rename and change types of parameters
     private String text;
     private int number;
@@ -85,16 +75,11 @@ public class ReferencesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_equipment, container, false);
+        View v = inflater.inflate(R.layout.fragment_references, container, false);
 
         // text from description field is read into the fragment
-//        equipmentParagraph1 = v.findViewById(R.id.Equipment_Paragraph1);
-//        equipmentParagraph2 = v.findViewById(R.id.Equipment_Paragraph2);
-//        equipmentParagraph3 = v.findViewById(R.id.Equipment_Paragraph3);
-//        equipmentParagraph4 = v.findViewById(R.id.Equipment_Paragraph4);
-//        equipmentImage1 = v.findViewById(R.id.Equipment_Image1);
-//        equipmentImage2 = v.findViewById(R.id.Equipment_Image2);
-//        equipmentImage3 = v.findViewById(R.id.Equipment_Image3);
+        referencesParagraph1 = v.findViewById(R.id.References_Paragraph);
+
 
         // get document reference and read it into the textView & imageView
         FruitRef.get()
@@ -102,26 +87,10 @@ public class ReferencesFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-//                            String paragraph1 = (String) documentSnapshot.get("paragraph1");
-//                            String paragraph2 = (String) documentSnapshot.get("paragraph2");
-//                            String paragraph3 = (String) documentSnapshot.get("paragraph3");
-//                            String paragraph4 = (String) documentSnapshot.get("paragraph4");
-//                            String replacement1 = paragraph1.replaceAll("\\\\n", "\n");
-//                            String replacement2 = paragraph2.replaceAll("\\\\n", "\n");
-//                            String replacement3 = paragraph3.replaceAll("\\\\n", "\n");
-//                            String replacement4 = paragraph4.replaceAll("\\\\n", "\n");
-//
-//                            equipmentParagraph1.setText(replacement1);
-//                            equipmentParagraph2.setText(replacement2);
-//                            equipmentParagraph3.setText(replacement3);
-//                            equipmentParagraph4.setText(replacement4);
-//
-//                            String picture1 = (String) documentSnapshot.get("picture1");
-//                            String picture2 = (String) documentSnapshot.get("picture2");
-//                            String picture3 = (String) documentSnapshot.get("picture3");
-//                            Picasso.get().load(picture1).into(equipmentImage1);
-//                            Picasso.get().load(picture2).into(equipmentImage2);
-//                            Picasso.get().load(picture3).into(equipmentImage3);
+                            String paragraph1 = (String) documentSnapshot.get("Paragraph1");
+                            String replacement1 = paragraph1.replaceAll("\\\\n", "\n");
+                            referencesParagraph1.setText(replacement1);
+
                         }
                     }
                 });

@@ -10,12 +10,21 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:context=".ReferencesFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/References_Paragraph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:lineSpacingExtra="10sp" />
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>
