@@ -58,10 +58,10 @@ public class FoodItemInstructions extends AppCompatActivity {
         ImageSlider imageSlider = findViewById(R.id.Slider);
         List<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(foodPicture.getPicture()));
-        slideModels.add(new SlideModel(foodPicture.getCanPicture()));
+        if (foodPicture.getCanPicture() != null) {
+            slideModels.add(new SlideModel(foodPicture.getCanPicture()));
+        }
         imageSlider.setImageList(slideModels, true);
-
-
 
 
         //load in TinyDB (The sharedPreferences life saver of the gods)
