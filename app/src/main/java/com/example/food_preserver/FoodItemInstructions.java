@@ -11,11 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FoodItemInstructions extends AppCompatActivity {
 
@@ -50,6 +53,16 @@ public class FoodItemInstructions extends AppCompatActivity {
         FoodItem foodPicture = getIntent().getParcelableExtra("food");
         assert foodPicture != null;
         Picasso.get().load(foodPicture.getPicture()).into(foodImage);
+
+        // slideshow for images
+        ImageSlider imageSlider = findViewById(R.id.Slider);
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(foodPicture.getPicture()));
+        slideModels.add(new SlideModel(foodPicture.getCanPicture()));
+        imageSlider.setImageList(slideModels, true);
+
+
+
 
         //load in TinyDB (The sharedPreferences life saver of the gods)
         final TinyDB tinydb = new TinyDB(getApplicationContext());
@@ -96,7 +109,7 @@ public class FoodItemInstructions extends AppCompatActivity {
             //save all changes to arraylist of favourited items
             tinydb.putListString("allFavourites", favourites);
         });
-
+        /*
         //swap the image to the canned variant
         foodImage.setOnClickListener(v -> {
             if(foodPicture.getCanPicture() != null) {
@@ -109,6 +122,7 @@ public class FoodItemInstructions extends AppCompatActivity {
                 }
             }
         });
+        */
     }
 
     @Override
