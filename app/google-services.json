@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1057626749027:android:a2c7c52053361e0559a056",
         "android_client_info": {
-          "package_name": "com.example.food_preserver"
+          "package_name": "com.preservenow.food_preserver"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "1057626749027-jb8or13egjc8p6e2102hlsfcgoug7kml.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.food_preserver",
+            "package_name": "com.preservenow.food_preserver",
             "certificate_hash": "55b4a1f69b8676ee7c26efa30ed8d1912c6b2a93"
           }
         },

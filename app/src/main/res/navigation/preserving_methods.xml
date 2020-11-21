@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/canning"
-        android:name="com.example.food_preserver.canningFragment"
+        android:name="com.preservenow.food_preserver.canningFragment"
         android:label="fragment_canning"
         tools:layout="@layout/fragment_canning" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/drying"
-        android:name="com.example.food_preserver.dryingFragment"
+        android:name="com.preservenow.food_preserver.dryingFragment"
         android:label="fragment_drying"
         tools:layout="@layout/fragment_drying" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/freezing"
-        android:name="com.example.food_preserver.freezingFragment"
+        android:name="com.preservenow.food_preserver.freezingFragment"
         android:label="fragment_freezing"
         tools:layout="@layout/fragment_freezing" />
 

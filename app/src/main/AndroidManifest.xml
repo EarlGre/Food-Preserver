@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.food_preserver">
+    package="com.preservenow.food_preserver">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,17 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FoodItemInstructions"
+        <activity android:name="com.preservenow.food_preserver.FoodItemInstructions"
             android:screenOrientation="portrait" />
-        <activity android:name=".SearchActivity"
+        <activity android:name="com.preservenow.food_preserver.SearchActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Help"
+        <activity android:name="com.preservenow.food_preserver.Help"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".MenuActivity"
+        <activity android:name="com.preservenow.food_preserver.MenuActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SplashScreen"
+            android:name="com.preservenow.food_preserver.SplashScreen"
             android:theme="@style/SplashScreenTheme"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name="com.preservenow.food_preserver.MainActivity"
             android:screenOrientation="portrait"/>
 
         <meta-data

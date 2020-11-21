@@ -6,7 +6,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.food_preserver"
+        applicationId "com.preservenow.food_preserver"
         minSdkVersion 25
         targetSdkVersion 30
         versionCode 1
